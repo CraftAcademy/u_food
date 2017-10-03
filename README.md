@@ -1,24 +1,46 @@
-# README
+##Getting Started
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Under the repository name, click Clone or download. Copy the clone URL for the repository. Open Terminal. Change the current working directory to the location where you want the cloned directory to be made. git clone https://github.com/CraftAcademy/u_food.git
 
-Things you may want to cover:
+### Prerequisites
 
-* Ruby version
+ruby 
+rails 5.1.4
+Installing
 
-* System dependencies
+Ensure that the gem versions on your local machine are as specified in the Gemfile. Run bundle install to install dependencies.
 
-* Configuration
+### Running the tests
 
-* Database creation
+We used Rspec for unit tests, and Cucumber for feature tests. Run rake to see all the tests pass.
 
-* Database initialization
+Break down into end to end tests(?)
 
-* How to run the test suite
+Explain what these tests test and why
 
-* Services (job queues, cache servers, search engines, etc.)
+They test creating the user model and sign up with both Rspec and Cucumber
 
-* Deployment instructions
 
-* ...
+Built With
+
+Rails
+
+#### Authors
+
+* Olofvi
+* Nurlanemir
+* Magnus-thor
+* BasilMawejje
+* Sajaas
+
+#### License
+
+MIT license
+
+#### Acknowledgments
+
+Built with help from the coaches and some cool gems. Thanks a lot! Coaches:
+
+* Tochman
+* Diraoulo
+* Faraznaeem
