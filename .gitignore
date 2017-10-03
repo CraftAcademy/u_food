@@ -17,3 +17,11 @@
 /yarn-error.log
 
 .byebug_history
+
+.idea/.generators
+.idea/.rakeTasks
+.idea/misc.xml
+.idea/modules.xml
+.idea/u_food.iml
+.idea/vcs.xml
+.idea/workspace.xml
