@@ -20,3 +20,8 @@
 
 .idea
 .idea/*
+
+coverage
+coverage/*
+
+.DS_Store
