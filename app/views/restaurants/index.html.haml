@@ -3,3 +3,7 @@
 - @categories.each do |category|
   %h5= category.name
   %p= category.description
+= link_to 'My Thai', restaurants_path
+- @restaurants.each do |restaurant|
+  %h5= restaurant.name
+  %p= restaurant.address
