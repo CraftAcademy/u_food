@@ -10,9 +10,10 @@ Feature: user can see dishes and their info
     And the following restaurants exist
       | name    | address          |
       | My Thai | Stockholm        |
+    And I navigate to the index page
+    And I click "My Thai"
 
   Scenario: user can view dish names
-    Given I visit the dish page
     Then I should see the text "Sushi rolls"
     And I should see the text "Tasty Japanese food"
     And I should see the text "10"
