@@ -4,7 +4,5 @@
   %h5= category.name
   %p= category.description
 - @restaurants.each do |restaurant|
-  -#= link_to 'My Thai', restaurants_path
-  -#- binding.pry
   = link_to restaurant.name, restaurant_path(restaurant)
   %p= restaurant.address
