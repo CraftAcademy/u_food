@@ -1,8 +1,10 @@
 - if @cart
-  %p
-    Cart:
-    = @cart.shopping_cart_items.count
-
+  Cart:
+  = @cart.shopping_cart_items.count
+  (
+  = link_to "Show cart" , cart_path(@cart)
+  )
+    
 %p= @restaurant.name
 %p= @restaurant.address
 - @dishes.each do |dish|
