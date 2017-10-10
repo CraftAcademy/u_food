@@ -1,10 +1,11 @@
 Given("I have 1 {string} in my order") do |item|
-  @cart = Cart.create
+  cart = Cart.create
   dish = Dish.find_by(name: item)
-  @cart.add(dish, dish.price)
+  cart.add(dish, dish.price)
 end
 
 Then("My order should contain {string} item") do |item_count|
-  expect(@cart.cart_item.count).to eq item_count
+  cart = Cart.last
+  expect(cart.shopping_cart_items.count).to eq item_count.to_i
 end
 
