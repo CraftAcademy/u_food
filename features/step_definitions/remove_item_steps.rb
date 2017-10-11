@@ -1,5 +1,5 @@
 Given("I have 1 {string} in my order") do |item|
-  cart = Cart.create
+  cart = FactoryGirl.create(:cart)
   dish = Dish.find_by(name: item)
   cart.add(dish, dish.price)
 end
