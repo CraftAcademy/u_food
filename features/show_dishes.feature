@@ -5,14 +5,18 @@ Feature: user can see dishes and their info
 
   Background:
     Given the following category exists
-      | name    | description  |
-      | Thai    | Thai food    |
+      | name | description |
+      | Thai | Thai food   |
+    Given the following menu exist
+      | name      |
+      | Everyday  |
+    Given the following restaurants exist
+      | name    | address   | restaurant_category |  description          | menu     |
+      | My Thai | Stockholm | Thai                |  Some hip thai place  | Everyday |
     Given the following dishes exists
       | name        | description         | price | pic_url               | restaurant | category |
       | Sushi rolls | Tasty Japanese food | 10    | https://goo.gl/fH7P5F | Ai         | Main     |
-    And the following restaurants exist
-      | name    | address   | restaurant_category |  description          |
-      | My Thai | Stockholm | Thai                |  Some hip thai place  |
+
     And I navigate to the index page
     And I click "My Thai"
 
