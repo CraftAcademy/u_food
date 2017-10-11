@@ -6,6 +6,6 @@ end
 
 Then("My order should contain {string} item") do |item_count|
   cart = Cart.last
-  expect(cart.shopping_cart_items.count).to eq item_count.to_i
+  expect(cart.total_unique_items).to eq item_count.to_i
 end
 

@@ -33,4 +33,4 @@ Feature: remove item from cart
     Given I fill in field "remove_amount" and id "Dumplings" with "2"
     And I click "Remove Dumplings"
     Then I should see "Dumplings was removed from your cart"
-    And My order should contain "0" item
+    And My order should contain "1" item
