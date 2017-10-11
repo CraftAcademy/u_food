@@ -3,8 +3,9 @@ class CartsController < ApplicationController
   def add
     dish = Dish.find(params[:id])
     find_cart
+    quantity = params[:amount].nil? ? 1 : params[:amount]
     @cart.add(dish, dish.price)
-    flash[:notice] = "#{dish.name} added to cart"
+    flash[:notice] = "#{dish.name} added to cart: #{quantity}"
     redirect_back(fallback_location: (request.referer || restaurant_path(params[:restaurant_id])))
   end
 

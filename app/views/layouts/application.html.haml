@@ -9,6 +9,10 @@
     %script(src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initiateMap" async defer)
   %body
     .container-fluid
-      - if flash[:notice]
-        .notice= flash[:notice]
+      - if flash
+        - flash.each do |name, message|
+          - if name == 'alert'
+            .alert= message
+          - if name == 'notice'
+            .notice= message
       = yield

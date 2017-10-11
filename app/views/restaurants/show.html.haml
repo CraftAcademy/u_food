@@ -1,11 +1,10 @@
 - if @cart
   Cart:
-  = @cart.shopping_cart_items.count
+  = @cart.total_unique_items
   (
   = link_to "Show cart" , cart_path(@cart)
   )
 .br
-
 .btn
   %p
   = link_to @restaurant.name, root_path, class: 'btn btn-primary'
@@ -18,16 +17,20 @@
 .br
   - if @current_dish_category
     - @current_dish_category.dishes.each do |dish|
-      %p Dish:
-      = dish.name
-      %p Description:
-      = dish.description
-      %p Price:
-      = dish.price
-      $
-      .br
-      = image_tag dish.pic_url
-      .br
-      = link_to "Add #{dish.name} to cart" , add_to_cart_path(dish, restaurant_id: @restaurant.id, dish_category_id: @current_dish_category.id), class: 'btn btn-secondary'
-      - if @cart && !@cart.shopping_cart_items.empty? && @cart.shopping_cart_items[0].item_id == dish.id
-        = link_to "Remove #{dish.name} from cart", cart_remove_item_path(dish, restaurant_id: @restaurant.id, dish_id: dish.id), class: 'btn btn-secondary'
+      %div{id: dish.name}
+        %p Dish:
+        = dish.name
+        %p Description:
+        = dish.description
+        %p Price:
+        = dish.price
+        $
+        .br
+        = image_tag dish.pic_url
+        .br
+        %img{alt: item.name, src: dish.pic_url}/
+        = form_tag add_to_cart_path(dish, restaurant_id: @restaurant.id), method: :get do
+          = text_field_tag :amount
+          = submit_tag "Add #{dish.name} to cart"
+        - if @cart && !@cart.shopping_cart_items.empty? && @cart.shopping_cart_items[0].item_id == dish.id
+          = link_to "Remove #{dish.name} from cart", cart_remove_item_path(dish, restaurant_id: @restaurant.id, dish_id: dish.id), class: 'btn btn-secondary'
