@@ -6,8 +6,6 @@ RSpec.describe Dish, type: :model do
     it { is_expected.to have_db_column :description }
     it { is_expected.to have_db_column :price }
     it { is_expected.to have_db_column :pic_url }
-    it { is_expected.to have_db_column :restaurant }
-    it { is_expected.to have_db_column :category }
   end
 
   describe 'Validations' do

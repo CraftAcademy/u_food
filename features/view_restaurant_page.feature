@@ -7,10 +7,10 @@ Feature: View a restaurant page
     Given the following category exists
       | name | description |
       | Thai | Thai food   |
-    Given the following menu exist
+    And the following menu exist
       | name      |
       | Everyday  |
-    Given the following restaurants exist
+    And the following restaurants exist
       | name    | address   | restaurant_category |  description          | menu     |
       | My Thai | Stockholm | Thai                |  Some hip thai place  | Everyday |
     And I navigate to the index page
@@ -20,5 +20,4 @@ Feature: View a restaurant page
     Then I should see "My Thai"
     And I should see "Stockholm"
     And I should see "Some hip thai place"
-    And show me the page
     And I should see "Everyday"

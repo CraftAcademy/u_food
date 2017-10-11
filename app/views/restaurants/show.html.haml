@@ -1,32 +1,35 @@
 - if @cart
   Cart:
-  = @cart.shopping_cart_items.count
+  = @cart.total_unique_items
   (
   = link_to "Show cart" , cart_path(@cart)
   )
-
-%p= @restaurant.name
-%p= @restaurant.address
-%p= @restaurant.description
+.br
+.btn
+  %p
+  = link_to @restaurant.name, root_path, class: 'btn btn-primary'
+  %p= @restaurant.address
+  %p= @restaurant.description
+.br
 - @menus.each do |menu|
   %p= menu.name
-- @dishes.each do |dish|
-  %p
-    Dish:
-    = dish.name
-  %p
-    Description:
-    = dish.description
-  %p
-    Category:
-    = dish.category
-  %p
-    Restaurant:
-    = dish.restaurant
-  %p
-    Price:
-    = dish.price
-    $
-  %img{alt: dish.name, src: dish.pic_url}/
-
-  = link_to "Add #{dish.name} to cart" , add_to_cart_path(dish, restaurant_id: @restaurant.id)
+.btn-group
+  - @category.each do |section|
+    = link_to section.name, restaurant_path(dish_category_id: section.id), class: 'btn btn-secondary'
+.br
+  - if @current_dish_category
+    - @current_dish_category.dishes.each do |item|
+      %div{id: item.name}
+        %p Dish:
+        = item.name
+        %p Description:
+        = item.description
+        %p Price:
+        = item.price
+        $
+        .br
+        = image_tag item.pic_url
+        .br
+        = form_tag add_to_cart_path(item, restaurant_id: @restaurant.id), method: :get do
+          = text_field_tag :amount
+          = submit_tag "Add #{item.name} to cart"

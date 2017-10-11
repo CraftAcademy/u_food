@@ -9,7 +9,10 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
     @dishes = Dish.all
     @menus = @restaurant.menus
-    # binding.pry
+    @category = DishCategory.all
+    if params[:dish_category_id].present?
+      @current_dish_category = DishCategory.find(params[:dish_category_id])
+    end
   end
 
   def find_cart
