@@ -4,29 +4,30 @@
   (
   = link_to "Show cart" , cart_path(@cart)
   )
-    
-%p= @restaurant.name
-%p= @restaurant.address
-%p= @restaurant.description
-- @dishes.each do |dish|
-  %p
-    Dish:
-    = dish.name
-  %p
-    Description:
-    = dish.description
-  %p
-    Category:
-    = dish.category
-  %p
-    Restaurant:
-    = dish.restaurant
-  %p
-    Price:
-    = dish.price
-    $
-  %img{alt: dish.name, src: dish.pic_url}/
+.br
 
-  = link_to "Add #{dish.name} to cart", add_to_cart_path(dish, restaurant_id: @restaurant.id)
-  - if @cart && !@cart.shopping_cart_items.empty? && @cart.shopping_cart_items[0].item_id == dish.id
-    = link_to "Remove #{dish.name} from cart", cart_remove_item_path(dish, restaurant_id: @restaurant.id, dish_id: dish.id)
+.btn
+  %p
+  = link_to @restaurant.name, root_path, class: 'btn btn-primary'
+  %p= @restaurant.address
+  %p= @restaurant.description
+.br
+.btn-group
+  - @category.each do |section|
+    = link_to section.name, restaurant_path(dish_category_id: section.id), class: 'btn btn-secondary'
+.br
+  - if @current_dish_category
+    - @current_dish_category.dishes.each do |item|
+      %p Dish:
+      = item.name
+      %p Description:
+      = item.description
+      %p Price:
+      = item.price
+      $
+      .br
+      = image_tag item.pic_url
+      .br
+      = link_to "Add #{item.name} to cart" , add_to_cart_path(item, restaurant_id: @restaurant.id, dish_category_id: @current_dish_category.id), class: 'btn btn-secondary'
+      - if @cart && !@cart.shopping_cart_items.empty? && @cart.shopping_cart_items[0].item_id == dish.id
+        = link_to "Remove #{dish.name} from cart", cart_remove_item_path(dish, restaurant_id: @restaurant.id, dish_id: dish.id)

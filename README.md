@@ -84,6 +84,8 @@ We automatically deploy this app with [Heroku](https://www.heroku.com/).
 ## Built With
 * [Rails](https://github.com/rails/rails)
 * [Acts_as_a_shopping_cart](https://github.com/crowdint/acts_as_shopping_cart)
+* [Gmaps.js](https://hpneo.github.io/gmaps/)
+
 
 ## Authors
 * [BasilMawejje](https://github.com/BasilMawejje)
