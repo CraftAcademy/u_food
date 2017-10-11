@@ -31,7 +31,7 @@
           = hidden_field_tag :restaurant_id, @restaurant.id
           = text_field_tag :amount, '1'
           = submit_tag "Add #{dish.name} to cart"
-        - if  @cart.shopping_cart_items.any? {|x| x.item_id == dish.id}
+        - if  @cart.shopping_cart_items.any? {|obj| obj.item_id == dish.id}
           = form_tag cart_remove_item_path(dish), method: :get do
             = hidden_field_tag :dish_id, dish.id
             = hidden_field_tag :restaurant_id, @restaurant.id
