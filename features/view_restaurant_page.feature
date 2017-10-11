@@ -7,12 +7,12 @@ Feature: View a restaurant page
     Given the following category exists
       | name | description |
       | Thai | Thai food   |
-    Given the following restaurants exist
-      | name    | address   | restaurant_category |  description          |
-      | My Thai | Stockholm | Thai                |  Some hip thai place  |
     Given the following menu exist
       | name      |
       | Everyday  |
+    Given the following restaurants exist
+      | name    | address   | restaurant_category |  description          | menu     |
+      | My Thai | Stockholm | Thai                |  Some hip thai place  | Everyday |
     And I navigate to the index page
 
   Scenario: User can view a restaurant page

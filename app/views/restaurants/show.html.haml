@@ -8,7 +8,8 @@
 %p= @restaurant.name
 %p= @restaurant.address
 %p= @restaurant.description
-%p= @menu.name
+- @menus.each do |menu|
+  %p= menu.name
 - @dishes.each do |dish|
   %p
     Dish:
