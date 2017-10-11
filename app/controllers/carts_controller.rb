@@ -12,7 +12,7 @@ class CartsController < ApplicationController
     dish = Dish.find(params[:dish_id])
     find_cart
     @cart.remove(dish, 1)
-    flash[:notice] = "#{dish.name} was removed from your order"
+    flash[:notice] = "#{dish.name} was removed from your cart"
     redirect_to restaurant_path(params[:restaurant_id])
   end
 

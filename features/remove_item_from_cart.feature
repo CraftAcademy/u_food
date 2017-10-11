@@ -20,5 +20,5 @@ Feature: remove item from cart
 
   Scenario: User clicks remove item
     Given I click "Remove Sushi rolls"
-    Then I should see "Sushi rolls was removed from your order"
+    Then I should see "Sushi rolls was removed from your cart"
     And My order should contain "0" item
