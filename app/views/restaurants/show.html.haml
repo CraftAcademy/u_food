@@ -26,9 +26,7 @@
         = dish.price
         $
         .br
-        = image_tag dish.pic_url
-        .br
-        %img{alt: item.name, src: dish.pic_url}/
+        %img{alt: dish.name, src: dish.pic_url}/
         = form_tag add_to_cart_path(dish, restaurant_id: @restaurant.id), method: :get do
           = text_field_tag :amount
           = submit_tag "Add #{dish.name} to cart"
