@@ -31,9 +31,10 @@
           = hidden_field_tag :restaurant_id, @restaurant.id
           = text_field_tag :amount, '1'
           = submit_tag "Add #{dish.name} to cart"
-        = form_tag cart_remove_item_path(dish), method: :get do
-          = hidden_field_tag :dish_id, dish.id
-          = hidden_field_tag :restaurant_id, @restaurant.id
-          = text_field_tag :remove_amount, '1'
-          = submit_tag "Remove #{dish.name} from cart"
-        -#- if @cart && !@cart.shopping_cart_items.empty? && @cart.shopping_cart_items.all.ids.include?(dish.id)
+        -#- binding.pry
+        - if @cart && !@cart.shopping_cart_items.empty? && @cart.shopping_cart_items.any? {|x| x.item_id == dish.id}
+          = form_tag cart_remove_item_path(dish), method: :get do
+            = hidden_field_tag :dish_id, dish.id
+            = hidden_field_tag :restaurant_id, @restaurant.id
+            = text_field_tag :remove_amount, '1'
+            = submit_tag "Remove #{dish.name} from cart"
