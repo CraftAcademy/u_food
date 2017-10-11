@@ -56,13 +56,6 @@ ActiveRecord::Schema.define(version: 20171010162558) do
     t.integer "restaurant_id"
   end
 
-  create_table "menus", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "restaurant_id"
-  end
-
   create_table "restaurant_categories", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -97,8 +90,6 @@ ActiveRecord::Schema.define(version: 20171010162558) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-
-  add_foreign_key "restaurant_categories", "restaurants"
-  add_foreign_key "restaurants", "restaurant_categories"
   add_foreign_key "dishes", "dish_categories"
+  add_foreign_key "restaurants", "restaurant_categories"
 end
