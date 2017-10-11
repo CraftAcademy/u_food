@@ -17,17 +17,17 @@
     = link_to section.name, restaurant_path(dish_category_id: section.id), class: 'btn btn-secondary'
 .br
   - if @current_dish_category
-    - @current_dish_category.dishes.each do |item|
+    - @current_dish_category.dishes.each do |dish|
       %p Dish:
-      = item.name
+      = dish.name
       %p Description:
-      = item.description
+      = dish.description
       %p Price:
-      = item.price
+      = dish.price
       $
       .br
-      = image_tag item.pic_url
+      = image_tag dish.pic_url
       .br
-      = link_to "Add #{item.name} to cart" , add_to_cart_path(item, restaurant_id: @restaurant.id, dish_category_id: @current_dish_category.id), class: 'btn btn-secondary'
+      = link_to "Add #{dish.name} to cart" , add_to_cart_path(dish, restaurant_id: @restaurant.id, dish_category_id: @current_dish_category.id), class: 'btn btn-secondary'
       - if @cart && !@cart.shopping_cart_items.empty? && @cart.shopping_cart_items[0].item_id == dish.id
-        = link_to "Remove #{dish.name} from cart", cart_remove_item_path(dish, restaurant_id: @restaurant.id, dish_id: dish.id)
+        = link_to "Remove #{dish.name} from cart", cart_remove_item_path(dish, restaurant_id: @restaurant.id, dish_id: dish.id), class: 'btn btn-secondary'
