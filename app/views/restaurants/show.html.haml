@@ -28,4 +28,5 @@
   %img{alt: dish.name, src: dish.pic_url}/
 
   = link_to "Add #{dish.name} to cart", add_to_cart_path(dish, restaurant_id: @restaurant.id)
-  = link_to "Remove #{dish.name} from cart", cart_remove_item_path(dish, restaurant_id: @restaurant.id, dish_id: dish.id)
+  - if @cart && !@cart.shopping_cart_items.empty? && @cart.shopping_cart_items[0].item_id == dish.id
+    = link_to "Remove #{dish.name} from cart", cart_remove_item_path(dish, restaurant_id: @restaurant.id, dish_id: dish.id)

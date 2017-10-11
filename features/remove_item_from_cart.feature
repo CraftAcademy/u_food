@@ -16,7 +16,7 @@ Feature: remove item from cart
       | Dumplings   | Tasty Japanese food | 15    | https://goo.gl/qKCyL5 |
     And I navigate to the index page
     And I click "My Thai"
-    And I have 1 "Sushi rolls" in my order
+    And I click "Add Sushi rolls to cart"
 
   Scenario: User clicks remove item
     Given I click "Remove Sushi rolls"
