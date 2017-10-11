@@ -1,17 +1,21 @@
 class CartsController < ApplicationController
 
+  before_action :find_cart
+
   def add
     dish = Dish.find(params[:id])
-    find_cart
-    quantity = params[:amount].empty? ? 1 : params[:amount]
-    @cart.add(dish, dish.price, quantity)
-    flash[:notice] = "#{dish.name} added to cart: #{quantity}"
+    if params[:amount].to_i
+      @cart.add(dish, dish.price, params[:amount].to_i)
+      flash[:notice] = "#{dish.name} added to cart: #{params[:amount]}"
+    else
+      flash[:notice] = "#Please enter a number"
+    end
     redirect_back(fallback_location: (request.referer || restaurant_path(params[:restaurant_id])))
   end
 
+
   def remove_item
     dish = Dish.find(params[:dish_id])
-    find_cart
     @cart.remove(dish, 1)
     flash[:notice] = "#{dish.name} was removed from your cart"
     redirect_to restaurant_path(params[:restaurant_id])

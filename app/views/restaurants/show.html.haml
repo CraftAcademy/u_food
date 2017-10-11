@@ -28,7 +28,7 @@
         .br
         %img{alt: dish.name, src: dish.pic_url}/
         = form_tag add_to_cart_path(dish, restaurant_id: @restaurant.id), method: :get do
-          = text_field_tag :amount
+          = text_field_tag :amount, '1'
           = submit_tag "Add #{dish.name} to cart"
         - if @cart && !@cart.shopping_cart_items.empty? && @cart.shopping_cart_items[0].item_id == dish.id
-          = link_to "Remove #{dish.name} from cart", cart_remove_item_path(dish, restaurant_id: @restaurant.id, dish_id: dish.id), class: 'btn btn-secondary'
+          = link_to "Remove #{dish.name} from cart", cart_remove_item_path(dish, restaurant_id: @restaurant.id, dish_id: dish.id)
