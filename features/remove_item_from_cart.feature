@@ -34,3 +34,8 @@ Feature: remove item from cart
     And I click "Remove Dumplings"
     Then I should see "Dumplings was removed from your cart"
     And My order should contain "1" item
+
+  Scenario: User gives wrong type of input
+    Given I fill in field "remove_amount" and id "Dumplings" with "f"
+    And I click "Remove Dumplings"
+    Then I should see "Please enter a number"
