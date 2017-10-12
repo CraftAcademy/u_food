@@ -15,6 +15,11 @@ RSpec.describe Dish, type: :model do
     it { is_expected.to validate_presence_of :pic_url }
   end
 
+  describe 'Associations' do
+    it { is_expected.to belong_to(:dish_category) }
+    it { is_expected.to belong_to(:restaurant) }
+  end
+
   describe 'Factory' do
     it 'should be valid' do
       expect(FactoryGirl.create(:dish)).to be_valid
