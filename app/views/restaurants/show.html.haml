@@ -18,18 +18,24 @@
     = link_to section.name, restaurant_path(dish_category_id: section.id), class: 'btn btn-secondary'
 .br
   - if @current_dish_category
-    - @current_dish_category.dishes.each do |item|
-      %div{id: item.name}
+    - @current_dish_category.dishes.each do |dish|
+      %div{id: dish.name}
         %p Dish:
-        = item.name
+        = dish.name
         %p Description:
-        = item.description
+        = dish.description
         %p Price:
-        = item.price
+        = dish.price
         $
         .br
-        = image_tag item.pic_url
-        .br
-        = form_tag add_to_cart_path(item, restaurant_id: @restaurant.id), method: :get do
-          = text_field_tag :amount
-          = submit_tag "Add #{item.name} to cart"
+        %img{alt: dish.name, src: dish.pic_url}/
+        = form_tag add_to_cart_path(dish), method: :get do
+          = hidden_field_tag :restaurant_id, @restaurant.id
+          = text_field_tag :amount, '1'
+          = submit_tag "Add #{dish.name} to cart"
+        - if  @cart.shopping_cart_items.any? {|obj| obj.item_id == dish.id}
+          = form_tag cart_remove_item_path(dish), method: :get do
+            = hidden_field_tag :dish_id, dish.id
+            = hidden_field_tag :restaurant_id, @restaurant.id
+            = text_field_tag :remove_amount, '1'
+            = submit_tag "Remove #{dish.name} from cart"

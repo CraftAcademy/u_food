@@ -14,8 +14,4 @@ class RestaurantsController < ApplicationController
       @current_dish_category = DishCategory.find(params[:dish_category_id])
     end
   end
-
-  def find_cart
-    @cart = Cart.find(session[:cart_id]) if session[:cart_id]
-  end
 end
