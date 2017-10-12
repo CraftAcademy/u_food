@@ -5,14 +5,17 @@ Feature: remove item from cart
 
   Background:
     Given the following category exists
-      | name | description |
-      | Thai | Thai food   |
+      | name        | description |
+      | Thai        | Thai food   |
+    And the following menu exist
+      | name      |
+      | Everyday  |
     And the following dish category exists
       | name        |
       | Main        |
     And the following restaurants exist
-      | name    | address   | restaurant_category |  description          |
-      | My Thai | Stockholm | Thai                |  Some hip thai place  |
+      | name        | address             | restaurant_category   |  description          | menu     |
+      | My Thai     | Stockholm           | Thai                  |  Some hip thai place  | Everyday |
     And the following dishes exists
       | name        | description         | price | pic_url               | dish_category |
       | Sushi rolls | Tasty Japanese food | 10    | https://goo.gl/fH7P5F | Main          |
