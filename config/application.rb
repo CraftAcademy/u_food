@@ -15,21 +15,16 @@ Bundler.require(*Rails.groups)
 module UFood
   class Application < Rails::Application
     #config.load_defaults 5.1
-    config = YAML.load(File.read(File.expand_path('../environment_variables.yml', __FILE__)))
-    config.merge! config.fetch(Rails.env, {})
-    config.each do |key, value|
-      ENV[key] = value.to_s unless value.kind_of? Hash
 
-      config.generators do |generate|
-        generate.helper false
-        generate.assets false
-        generate.view_specs false
-        generate.helper_specs false
-        generate.routing_specs false
-        generate.controller_specs false
-      end
-      config.generators.system_tests = nil
-
+    config.generators do |generate|
+      generate.helper false
+      generate.assets false
+      generate.view_specs false
+      generate.helper_specs false
+      generate.routing_specs false
+      generate.controller_specs false
     end
+    config.generators.system_tests = nil
+
   end
 end
