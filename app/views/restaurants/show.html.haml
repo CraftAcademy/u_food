@@ -3,7 +3,7 @@
   = @cart.total_unique_items
   - if  @cart.shopping_cart_items.any?
     (
-    = link_to "Show cart" , cart_path(@cart, restaurant_id: @restaurant.id)
+    = link_to 'Show cart' , cart_path(@cart, restaurant_id: @restaurant.id)
     )
 .br
 .btn
