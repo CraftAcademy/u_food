@@ -25,4 +25,4 @@ coverage
 coverage/*
 
 .DS_Store
-config/environment_variables.yml
+.env
