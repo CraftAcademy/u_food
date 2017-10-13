@@ -24,4 +24,4 @@
 coverage
 coverage/*
 
-.DS_Store/config/app_environment_variables.rb
+.DS_Store
