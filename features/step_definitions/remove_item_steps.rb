@@ -9,3 +9,7 @@ Then("My order should contain {string} item") do |item_count|
   expect(cart.total_unique_items).to eq item_count.to_i
 end
 
+Then("I should be on the restaurant page") do
+  @restaurant = Restaurant.last
+  expect(page).to have_current_path restaurant_path(@restaurant)
+end

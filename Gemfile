@@ -21,6 +21,7 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'shoulda-matchers'

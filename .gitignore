@@ -25,3 +25,4 @@ coverage
 coverage/*
 
 .DS_Store
+.env

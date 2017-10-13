@@ -1,10 +1,16 @@
 In cart:
-- @cart.shopping_cart_items.each do |cart_item|
+- @cart.shopping_cart_items.each do |dish|
   %p
-    = cart_item.quantity
-    = cart_item.item.name
-    = cart_item.price
-    $
+    %div{id: dish.item.name}
+      = dish.quantity
+      = dish.item.name
+      = dish.price
+      $
+      = form_tag cart_remove_item_path(dish), method: :get do
+        = hidden_field_tag :dish_id, dish.item.id
+        = hidden_field_tag :restaurant_id, @restaurant.id
+        = number_field_tag :remove_amount, 1, min: 1
+        = submit_tag 'Remove from cart', class: 'btn btn-primary'
 %br
 %p
   Total items:
@@ -13,3 +19,7 @@ In cart:
   Total cost:
   = @cart.total
   $
+- if  @cart.shopping_cart_items.any?
+  = link_to 'Clear cart', cart_clear_cart_path(@cart, restaurant_id: @restaurant.id), class: 'btn btn-primary'
+= link_to 'Home', root_path, class: 'btn btn-primary'
+= link_to 'Back to restaurant', restaurant_path(@restaurant), class: 'btn btn-primary'

@@ -15,6 +15,7 @@ Bundler.require(*Rails.groups)
 module UFood
   class Application < Rails::Application
     #config.load_defaults 5.1
+
     config.generators do |generate|
       generate.helper false
       generate.assets false
@@ -24,5 +25,6 @@ module UFood
       generate.controller_specs false
     end
     config.generators.system_tests = nil
+
   end
 end

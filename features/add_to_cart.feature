@@ -4,7 +4,13 @@ Feature: user can can add dish to order
   I would like to able to add dish to order
 
   Background:
-    Given the following category exists
+    Given the following user exists
+      | email               | encrypted_password |
+      | example@example.com | password           |
+    And the following user is signed in
+      | email               | encrypted_password |
+      | example@example.com | password           |
+    And the following category exists
       | name        | description |
       | Thai        | Thai food   |
     And the following menu exist
@@ -27,19 +33,30 @@ Feature: user can can add dish to order
     Given I click "Main"
     Then I should see the text "Sushi rolls"
     And I fill in field "amount" and id "Sushi rolls" with "1"
-    And I click "Add Sushi rolls to cart"
+    And I click "Add to cart" within id "Sushi rolls"
     Then I should see the text "Sushi rolls added to cart: 1"
     And I should see the text "Cart: 1"
+    And I click "Show cart"
+    Then I should see the text "1"
+    And I should see the text "Sushi rolls"
+    And I should see the text "Total items: 1"
+    And I should see the text "Total cost: 10.00 $"
+
+  Scenario: User adds multiple items to cart
+    Given I click "Main"
     Then I should see the text "Dumplings"
     And I fill in field "amount" and id "Dumplings" with "2"
-    And I click "Add Dumplings to cart"
+    And I click "Add to cart" within id "Dumplings"
     Then I should see the text "Dumplings added to cart: 2"
-    And I should see the text "Cart: 3"
+    And I should see the text "Cart: 2"
     And I click "Show cart"
-    Then I should be on cart page
-    And I should see the text "1"
-    And I should see the text "Sushi rolls"
-    And I should see the text "2"
+    Then I should see the text "2"
     And I should see the text "Dumplings"
-    And I should see the text "Total items: 3"
-    And I should see the text "Total cost: 40.00 $"
+    And I should see the text "Total items: 2"
+    And I should see the text "Total cost: 30.00 $"
+
+  Scenario: User should not be able to add to order if not signed in
+    Given the user is signed out
+    Then I click "Main"
+    And I should see the text "Dumplings"
+    And I should not see link "Add Dumplings to cart"

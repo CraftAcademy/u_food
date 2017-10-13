@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :dishes
   resources :carts do
     get :remove_item
+    get :clear_cart
   end
   get '/add_to_cart/:id', controller: :carts, action: :add, as: :add_to_cart
 end

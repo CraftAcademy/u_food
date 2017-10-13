@@ -4,8 +4,8 @@ Feature: As a user
 
   Background:
     Given the following user exists
-      | email               | encrypted_password |
-      | example@example.com | password           |
+      | email               | password |
+      | example@example.com | password |
     And I navigate to the index page
     And I click "Sign In"
 
