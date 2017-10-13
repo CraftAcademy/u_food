@@ -84,3 +84,4 @@ end
   dish_cat = DishCategory.find_by(name: "Dessert")
   dish.update_attribute(:dish_category, dish_cat)
 end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
