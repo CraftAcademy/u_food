@@ -3,10 +3,11 @@ And(/^(?:I expect a Google map to load|the map has been loaded)$/) do
   expect(page).to have_css '#map .gm-style'
 end
 
-Then('I should see a pin on the map') do
+Given(/^I should see "([^"]*)" pins on the map$/) do |int|
   markers_count = page.evaluate_script('map.markers.length;')
-  expect(markers_count).to eq 1
+  expect(markers_count).to eq int.to_i
 end
+
 
 Then(/^my location should be approximately: "([^"]*)" lat and "([^"]*)" lng$/) do |lat, lng|
   ACCEPTED_CENTER_OFFSET = 0.2

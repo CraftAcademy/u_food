@@ -20,6 +20,7 @@ gem 'acts_as_shopping_cart'
 gem 'jquery-rails'
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'geocoder'
 
 group :development, :test do
   gem 'dotenv-rails'

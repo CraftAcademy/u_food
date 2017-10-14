@@ -14,6 +14,10 @@ RSpec.describe Restaurant, type: :model do
     it { is_expected.to have_db_column :description }
   end
 
+  context 'validations' do
+    it { is_expected.to validate_presence_of :address }
+  end
+
   describe 'associations' do
       it { is_expected.to belong_to(:restaurant_category) }
       it { is_expected.to have_many(:menus) }
