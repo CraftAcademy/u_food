@@ -10,9 +10,16 @@ When("I go to the dashboard") do
   visit admin_user_session_path
 end
 
-When("I click {string} for {string}") do |link, restaurant_name|
+When("I click {string} for {string} restaurant") do |link, restaurant_name|
   restaurant = Restaurant.find_by(name: restaurant_name)
   within("#restaurant_#{restaurant.id}") do
+    click_link_or_button link
+  end
+end
+
+Then("I click {string} for {string} category") do |link, restaurant_category|
+  res_category = RestaurantCategory.find_by(name: restaurant_category)
+  within("#restaurant_category_#{res_category.id}") do
     click_link_or_button link
   end
 end

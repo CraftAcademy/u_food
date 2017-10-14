@@ -1,6 +1,6 @@
 Feature: Admin can administer restaurants
   As admin
-  I order to add maintain restaurants
+  I order to maintain restaurants
   I would like to be able to create, read, update and delete restaurants
 
   Background:
@@ -29,7 +29,7 @@ Feature: Admin can administer restaurants
 
   Scenario: Admin updates restaurant
     Given I click "Restaurants"
-    When I click "Edit" for "My Thai" restaurant
+    Then I click "Edit" for "My Thai"
     And I fill in "Name" with "The Old Thai Restaurant"
     And I fill in "Address" with "Street 78"
     And I fill in "Description" with "To many descriptions to fill out"
@@ -40,29 +40,28 @@ Feature: Admin can administer restaurants
   @javascript
   Scenario: Admin deletes restaurant
     Given I click "Restaurants"
-    When I click "Delete" for "My Thai" restaurant
+    When I click "Delete" for "My Thai"
 #    And I click ok on alert box
     Then I should see "Restaurant was successfully destroyed."
 
   Scenario: Admin adds new restaurant category
-    Given I click "Restaurant Categories"
+    Given I click "Restaurant Category"
     Then I click "New Restaurant Category"
-    And I fill in "Name" with "Swedish"
-    And I fill in "Description" with "Swedish Delicatesse"
-    Then I click "Create Restaurant category"
-    And I should see "Restaurant category was successfully created."
+    And I fill in "Swedish" with "Swedish delicatesse"
+    Then I click "Create Restaurant Category"
+    And I should see "Restaurant Category was successfully created."
 
-  Scenario: Admin adds edits restaurant category
-    Given I click "Restaurant Categories"
-    Then I click "Edit" for "Thai" category
+  Scenario: Admin adds new restaurant category
+    Given I click "Restaurant Category"
+    Then I click "Edit" for "Thai"
     And I fill in "Name" with "Chinese"
     And I fill in "Description" with "Chinese food"
-    When I click "Update Restaurant category"
-    Then I should see "Restaurant category was successfully updated."
+    When I click "Update Restaurant Category"
+    Then I should see "Restaurant Category was successfully updated."
 
   @javascript
   Scenario: Admin deletes restaurant category
-    Given I click "Restaurant Categories"
-    Then I click "Delete" for "Thai" category
+    Given I click "Restaurants Category"
+    When I click "Delete" for "Thai"
 #    And I click ok on alert box
-    Then I should see "Restaurant category was successfully destroyed."
+    Then I should see "Restaurant Category was successfully destroyed."
