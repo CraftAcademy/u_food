@@ -7,7 +7,7 @@ permit_params :email, :encrypted_password, :reset_password_token
 #
 # permit_params do
 #   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
+#   permitted << :other if params[:action] == 'create' && current_user.admin_features?
 #   permitted
 # end
 

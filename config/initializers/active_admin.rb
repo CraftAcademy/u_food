@@ -2,7 +2,7 @@ ActiveAdmin.setup do |config|
   # == Site Title
   #
   # Set the title that is displayed on the main layout
-  # for each of the active admin pages.
+  # for each of the active admin_features pages.
   #
   config.site_title = "U Food"
 
@@ -33,24 +33,24 @@ ActiveAdmin.setup do |config|
   #   config.default_namespace = false
   #
   # Default:
-  # config.default_namespace = :admin
+  # config.default_namespace = :admin_features
   #
   # You can customize the settings for each namespace by using
   # a namespace block. For example, to change the site title
   # within a namespace:
   #
-  #   config.namespace :admin do |admin|
-  #     admin.site_title = "Custom Admin Title"
+  #   config.namespace :admin_features do |admin_features|
+  #     admin_features.site_title = "Custom Admin Title"
   #   end
   #
-  # This will ONLY change the title for the admin section. Other
+  # This will ONLY change the title for the admin_features section. Other
   # namespaces will continue to use the main "site_title" configuration.
 
   # == User Authentication
   #
   # Active Admin will automatically call an authentication
   # method in a before filter of all controller actions to
-  # ensure that there is a currently logged in admin user.
+  # ensure that there is a currently logged in admin_features user.
   #
   # This setting changes the method which Active Admin calls
   # within the application controller.
@@ -161,7 +161,7 @@ ActiveAdmin.setup do |config|
 
   # == Meta Tags
   #
-  # Add additional meta tags to the head element of active admin pages.
+  # Add additional meta tags to the head element of active admin_features pages.
   #
   # Add tags to all pages logged in users see:
   #   config.meta_tags = { author: 'My Company' }
@@ -215,17 +215,17 @@ ActiveAdmin.setup do |config|
   #
   # To change the default utility navigation to show a link to your website & a logout btn
   #
-  #   config.namespace :admin do |admin|
-  #     admin.build_menu :utility_navigation do |menu|
+  #   config.namespace :admin_features do |admin_features|
+  #     admin_features.build_menu :utility_navigation do |menu|
   #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
-  #       admin.add_logout_button_to_menu menu
+  #       admin_features.add_logout_button_to_menu menu
   #     end
   #   end
   #
   # If you wanted to add a static menu item to the default menu provided:
   #
-  #   config.namespace :admin do |admin|
-  #     admin.build_menu :default do |menu|
+  #   config.namespace :admin_features do |admin_features|
+  #     admin_features.build_menu :default do |menu|
   #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
   #     end
   #   end
@@ -235,19 +235,19 @@ ActiveAdmin.setup do |config|
   # You can disable download links on resource listing pages,
   # or customize the formats shown per namespace/globally
   #
-  # To disable/customize for the :admin namespace:
+  # To disable/customize for the :admin_features namespace:
   #
-  #   config.namespace :admin do |admin|
+  #   config.namespace :admin_features do |admin_features|
   #
   #     # Disable the links entirely
-  #     admin.download_links = false
+  #     admin_features.download_links = false
   #
   #     # Only show XML & PDF options
-  #     admin.download_links = [:xml, :pdf]
+  #     admin_features.download_links = [:xml, :pdf]
   #
   #     # Enable/disable the links based on block
   #     #   (for example, with cancan)
-  #     admin.download_links = proc { can?(:view_download_links) }
+  #     admin_features.download_links = proc { can?(:view_download_links) }
   #
   #   end
 

@@ -8,7 +8,7 @@ permit_params :dish_id, :menu_id
 #
 # permit_params do
 #   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
+#   permitted << :other if params[:action] == 'create' && current_user.admin_features?
 #   permitted
 # end
 

@@ -3,7 +3,7 @@ class Restaurant < ApplicationRecord
   validates :address, presence: true
   geocoded_by :address   # can also be an IP address
   after_validation :geocode          # auto-fetch coordinates
-  has_many :menus
+  has_many :menus, dependent: :destroy
   has_many :dishes, through: :menus
   has_many :dish_categories, through: :dishes
 
