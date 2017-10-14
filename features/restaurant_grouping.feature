@@ -8,10 +8,14 @@ Feature: User can select restaurant by category
       | name    | description  |
       | Thai    | Thai food    |
       | Mexican | Mexican food |
-    And the following restaurants exist
-      | name       | address     | restaurant_category |  description              |
-      | My Thai    | Stockholm   | Thai                |  Some hip thai place      |
-      | My Mexican | Mexico city | Mexican             |  Some nice mexican place  |
+
+    Given the following menu exist
+      | name      |
+      | Everyday  |
+    Given the following restaurants exist
+      | name       | address     | restaurant_category |  description              | menu     |
+      | My Thai    | Stockholm   | Thai                |  Some hip thai place      | Everyday |
+      | My Mexican | Mexico city | Mexican             |  Some nice mexican place  | Everyday |
 
   Scenario: User can see restaurant by category
     Given I navigate to the index page

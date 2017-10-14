@@ -4,6 +4,12 @@ Feature: remove item from cart
   I would like to remove a dish from cart
 
   Background:
+    Given the following category exists
+      | name        | description |
+      | Thai        | Thai food   |
+    And the following menu exist
+      | name      |
+      | Everyday  |
     Given the following user exists
       | email               | encrypted_password |
       | example@example.com | password           |
@@ -17,8 +23,8 @@ Feature: remove item from cart
       | name        |
       | Main        |
     And the following restaurants exist
-      | name    | address   | restaurant_category |  description          |
-      | My Thai | Stockholm | Thai                |  Some hip thai place  |
+      | name        | address             | restaurant_category   |  description          | menu     |
+      | My Thai     | Stockholm           | Thai                  |  Some hip thai place  | Everyday |
     And the following dishes exists
       | name        | description         | price | pic_url               | dish_category |
       | Sushi rolls | Tasty Japanese food | 10    | https://goo.gl/fH7P5F | Main          |
