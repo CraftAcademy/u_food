@@ -7,24 +7,22 @@ Feature: user can can add dish to order
     Given the following user exists
       | email               | encrypted_password |
       | example@example.com | password           |
+
     And the following user is signed in
       | email               | encrypted_password |
       | example@example.com | password           |
-    And the following category exists
-      | name        | description |
-      | Thai        | Thai food   |
-    And the following dish category exists
-      | name        |
-      | Main        |
-    And the following restaurants exist
-      | name        | address             | restaurant_category   |  description          |
-      | My Thai     | Stockholm           | Thai                  |  Some hip thai place  |
+
+    Given the following restaurants with associations exist
+      | name    | address    |  description          | res_category_name | menu_name    |
+      | Yappi   | Stockholm  |  Some hip thai place  | Japanese          | Lunch        |
+
     And the following dishes exists
-      | name        | description         | price | pic_url               | dish_category |
-      | Sushi rolls | Tasty Japanese food | 10    | https://goo.gl/fH7P5F | Main          |
-      | Dumplings   | Tasty Japanese food | 15    | https://goo.gl/qKCyL5 | Main          |
+      | name        | description         | price | pic_url               | dish_category |menu_name    |
+      | Sushi rolls | Tasty Japanese food | 10    | https://goo.gl/fH7P5F | Main          |Lunch        |
+      | Dumplings   | Tasty Japanese food | 15    | https://goo.gl/qKCyL5 | Main          |Lunch        |
+
     Then I navigate to the index page
-    And I click "My Thai"
+    And I click "Yappi"
 
   Scenario: User can add dish to order
     Given I click "Main"

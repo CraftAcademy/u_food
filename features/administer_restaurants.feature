@@ -33,3 +33,10 @@ Feature: Admin can administer restaurants
     And I fill in "Description" with "To many descriptions to fill out"
     When I click "Update Restaurant"
     Then I should see "Restaurant was successfully updated."
+
+  @javascript
+  Scenario: Admin deletes restaurant
+    Given I click "Restaurants"
+    When I click "Delete" for "My Thai"
+#    And I click ok on alert box
+    Then I should see "Restaurant was successfully destroyed."

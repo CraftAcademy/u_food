@@ -16,3 +16,12 @@ When("I click {string} for {string}") do |link, restaurant_name|
     click_link_or_button link
   end
 end
+
+When("I click ok on alert box") do
+  # page.driver.browser.switch_to.alert.accept
+  binding.pry
+  page.accept_alert 'Are you sure you want to delete this?' do
+    click_button('OK')
+  end
+end
+

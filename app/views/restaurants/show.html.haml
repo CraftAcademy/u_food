@@ -1,7 +1,7 @@
 - if @cart
   Cart:
   = @cart.total_unique_items
-  - if  @cart.shopping_cart_items.any?
+  - if @cart.shopping_cart_items.any?
     (
     = link_to 'Show cart' , cart_path(@cart, restaurant_id: @restaurant.id)
     )
@@ -12,16 +12,17 @@
   %h1= @restaurant.name
   %p= @restaurant.address
   %p= @restaurant.description
-.br 
+.br
 .btn-group
-  - @category.each do |section|
+  - @dish_categories.each do |section|
     = link_to section.name, restaurant_path(dish_category_id: section.id), class: 'btn btn-primary'
 .br
   - if @current_dish_category
-    - @current_dish_category.dishes.each do |dish|
+    - @current_category_dishes.each do |dish|
       %div{id: dish.name}
-        %p Dish:
-        = dish.name
+        %strong
+          Dish:
+          = dish.name
         %p Description:
         = dish.description
         %p Price:

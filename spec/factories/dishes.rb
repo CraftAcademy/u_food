@@ -1,8 +1,13 @@
 FactoryGirl.define do
   factory :dish do
-    name 'MyString'
-    description 'MyText'
-    price 1
-    pic_url 'MyString'
+    name 'DishName'
+    description 'DishDescription'
+    price 10
+    pic_url 'https://goo.gl/images/hpTGCV'
+
+    factory :dish_with_category do
+      dish_category
+    end
+
   end
 end

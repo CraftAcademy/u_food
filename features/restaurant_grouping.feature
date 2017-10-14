@@ -4,10 +4,11 @@ Feature: User can select restaurant by category
   I would like to see a restaurant by category
 
   Background:
-    Given the following category exists
+    Given the following restaurant category exists
       | name    | description  |
       | Thai    | Thai food    |
       | Mexican | Mexican food |
+
     And the following restaurants exist
       | name       | address     | restaurant_category |  description              |
       | My Thai    | Stockholm   | Thai                |  Some hip thai place      |
