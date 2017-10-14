@@ -4,14 +4,10 @@ Feature: Admin can administer restaurants
   I would like to be able to create, read, update and delete restaurants
 
   Background:
-    Given the following restaurant category exists
-      | name    | description  |
-      | Thai    | Thai food    |
-      | Mexican | Mexican food |
-
-    And the following restaurants exist
-      | name    | address   | restaurant_category | description         |
-      | My Thai | Stockholm | Thai                | Some hip thai place |
+    Given the following restaurants with associations exist
+      | name    | address   | description         | res_category_name | menu_name |
+      | My Thai | Stockholm | Some hip thai place | Thai              | Lunch     |
+      | My Mex  | Stockholm | Mexican tacos       | Mexican           | Lunch     |
 
     And An admin exists "admin@example.com" "password"
     And I am logged in as admin
