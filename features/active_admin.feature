@@ -5,7 +5,7 @@ Feature: Admin can administer all objects
 
   Background:
     Given the following admin user exists
-      | email               | password |
+      | email             | password |
       | admin@example.com | password |
     When I go to the dashboard
 
