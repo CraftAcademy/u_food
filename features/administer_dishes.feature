@@ -1,67 +1,62 @@
-Feature: Admin can administer restaurants
+Feature: Admin can administer dishes
   As admin
-  I order to maintain restaurants
-  I would like to be able to create, read, update and delete restaurants
+  I order to maintain dishes
+  I would like to be able to create, read, update and delete dishes
 
   Background:
-    Given the following restaurant category exists
-      | name    | description  |
-      | Thai    | Thai food    |
-      | Mexican | Mexican food |
-
-    And the following restaurants exist
-      | name    | address   | restaurant_category | description         |
-      | My Thai | Stockholm | Thai                | Some hip thai place |
+    Given the following dishes exists
+      | name        | description         | price | pic_url               | dish_category |menu_name    |
+      | Sushi rolls | Tasty Japanese food | 10    | https://goo.gl/fH7P5F | Main          |Lunch        |
+      | Dumplings   | Tasty Japanese food | 15    | https://goo.gl/qKCyL5 | Main          |Lunch        |
 
     And An admin exists "admin@example.com" "password"
     And I am logged in as admin
     And I go to the dashboard
 
-  Scenario: Admin adds new restaurant
-    Given I click "Restaurants"
-    Then I click "New Restaurant"
-    And I fill in "Name" with "The New Thai Restaurant"
-    And I fill in "Address" with "Street 1"
+  Scenario: Admin adds new dish
+    Given I click "Dishes"
+    Then I click "New Dish"
+    And I fill in "Name" with "Sushi"
     And I fill in "Description" with "I really cant come up with some boring description"
-    And I select "Thai" from restaurant category dropdown
-    Then I click "Create Restaurant"
-    And I should see "Restaurant was successfully created."
+    And I fill in "Price" with "23"
+    And I fill in "Pic url" with "https://goo.gl/qKCyL5"
+    And I select "Main" from dish category dropdown
+    Then I click "Create Dish"
+    And I should see "Dish was successfully created."
 
-  Scenario: Admin updates restaurant
-    Given I click "Restaurants"
-    Then I click "Edit" for "My Thai"
-    And I fill in "Name" with "The Old Thai Restaurant"
-    And I fill in "Address" with "Street 78"
+  Scenario: Admin updates dish
+    Given I click "Dishes"
+    Then I click "Edit" for "Sushi rolls" dish
+    And I fill in "Name" with "Sushi sticks"
     And I fill in "Description" with "To many descriptions to fill out"
-    And I select "Mexican" from restaurant category dropdown
-    When I click "Update Restaurant"
-    Then I should see "Restaurant was successfully updated."
+    And I select "Main" from dish category dropdown
+    When I click "Update Dish"
+    Then I should see "Dish was successfully updated."
 
   @javascript
-  Scenario: Admin deletes restaurant
-    Given I click "Restaurants"
-    When I click "Delete" for "My Thai"
+  Scenario: Admin deletes dish
+    Given I click "Dishes"
+    When I click "Delete" for "Sushi rolls" dish
 #    And I click ok on alert box
-    Then I should see "Restaurant was successfully destroyed."
+    Then I should see "Dish was successfully destroyed."
 
-  Scenario: Admin adds new restaurant category
-    Given I click "Restaurant Category"
-    Then I click "New Restaurant Category"
-    And I fill in "Swedish" with "Swedish delicatesse"
-    Then I click "Create Restaurant Category"
-    And I should see "Restaurant Category was successfully created."
+  Scenario: Admin adds new dish category
+    Given I click "Dish Categories"
+    Then I click "New Dish Category"
+    And I fill in "Name" with "Brunch"
+    Then I click "Create Dish category"
+    And I should see "Dish category was successfully created."
 
-  Scenario: Admin adds new restaurant category
-    Given I click "Restaurant Category"
-    Then I click "Edit" for "Thai"
-    And I fill in "Name" with "Chinese"
-    And I fill in "Description" with "Chinese food"
-    When I click "Update Restaurant Category"
-    Then I should see "Restaurant Category was successfully updated."
+  Scenario: Admin edits category
+    Given I click "Dish Categories"
+    Then I click "Edit" for "Main" dish category
+    And I fill in "Name" with "Starter"
+    When I click "Update Dish category"
+    Then I should see "Dish category was successfully updated."
 
   @javascript
-  Scenario: Admin deletes restaurant category
-    Given I click "Restaurants Category"
-    When I click "Delete" for "Thai"
+  Scenario: Admin deletes dish category
+    Given I click "Dish Categories"
+    Then I click "Delete" for "Main" dish category
 #    And I click ok on alert box
-    Then I should see "Restaurant Category was successfully destroyed."
+    Then I should see "Dish category was successfully destroyed."

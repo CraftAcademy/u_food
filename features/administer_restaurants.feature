@@ -48,7 +48,7 @@ Feature: Admin can administer restaurants
     Then I click "Create Restaurant category"
     And I should see "Restaurant category was successfully created."
 
-  Scenario: Admin adds edits restaurant category
+  Scenario: Admin edits restaurant category
     Given I click "Restaurant Categories"
     Then I click "Edit" for "Thai" category
     And I fill in "Name" with "Chinese"
@@ -59,6 +59,6 @@ Feature: Admin can administer restaurants
   @javascript
   Scenario: Admin deletes restaurant category
     Given I click "Restaurant Categories"
-    Then I click "Delete" for "Thai" category
+    Then I click "Delete" for "Thai" restaurant category
 #    And I click ok on alert box
     Then I should see "Restaurant category was successfully destroyed."
