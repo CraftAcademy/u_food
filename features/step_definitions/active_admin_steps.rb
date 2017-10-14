@@ -25,3 +25,8 @@ When("I click ok on alert box") do
   end
 end
 
+Then("I select {string} from restaurant category dropdown") do |option|
+  select option, from: "restaurant[restaurant_category_id]"
+end
+
+

@@ -5,12 +5,13 @@ Feature: Admin can administer restaurants
 
   Background:
     Given the following restaurant category exists
-      | name        | description |
-      | Thai        | Thai food   |
+      | name    | description  |
+      | Thai    | Thai food    |
+      | Mexican | Mexican food |
 
     And the following restaurants exist
-      | name        | address             | restaurant_category   |  description          |
-      | My Thai     | Stockholm           | Thai                  |  Some hip thai place  |
+      | name    | address   | restaurant_category | description         |
+      | My Thai | Stockholm | Thai                | Some hip thai place |
 
     And An admin exists "admin@example.com" "password"
     And I am logged in as admin
@@ -22,6 +23,7 @@ Feature: Admin can administer restaurants
     And I fill in "Name" with "The New Thai Restaurant"
     And I fill in "Address" with "Street 1"
     And I fill in "Description" with "I really cant come up with some boring description"
+    And I select "Thai" from restaurant category dropdown
     Then I click "Create Restaurant"
     And I should see "Restaurant was successfully created."
 
@@ -31,6 +33,7 @@ Feature: Admin can administer restaurants
     And I fill in "Name" with "The Old Thai Restaurant"
     And I fill in "Address" with "Street 78"
     And I fill in "Description" with "To many descriptions to fill out"
+    And I select "Mexican" from restaurant category dropdown
     When I click "Update Restaurant"
     Then I should see "Restaurant was successfully updated."
 
