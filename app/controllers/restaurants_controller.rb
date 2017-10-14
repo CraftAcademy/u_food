@@ -3,7 +3,7 @@ class RestaurantsController < ApplicationController
 
   def index
     @categories = RestaurantCategory.all
-    @restaurants = get_restaurants_collection
+    @restaurants = Restaurant.for_markers
   end
 
   def show
@@ -19,15 +19,6 @@ class RestaurantsController < ApplicationController
         end
       end
 
-    end
-  end
-
-  private
-  def get_restaurants_collection
-    Restaurant.all.to_a.map(&:serializable_hash).map do |restaurant|
-      {name: restaurant['name'],
-       lattitude: restaurant['latitude'],
-       longitude: restaurant['longitude']}
     end
   end
 end

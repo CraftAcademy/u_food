@@ -22,4 +22,17 @@ RSpec.describe Restaurant, type: :model do
       it { is_expected.to belong_to(:restaurant_category) }
       it { is_expected.to have_many(:menus) }
   end
+
+  describe 'class methods' do
+    let!(:restaurants) { 3.times {FactoryGirl.create(:restaurant)} }
+    describe '#for_markers' do
+      it 'returns a collection' do
+        expect(Restaurant.for_markers).to be_an_instance_of Array
+      end
+
+      it 'includes all restaurants' do
+        expect(Restaurant.for_markers.size).to eq 3
+      end
+    end
+  end
 end
