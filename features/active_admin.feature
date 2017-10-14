@@ -4,10 +4,8 @@ Feature: Admin can administer all objects
   I would like to be able to create, update and delete on all objects the system
 
   Background:
-    Given the following admin user exists
-      | email             | password |
-      | admin@example.com | password |
-    When I go to the dashboard
+    Given An admin exists "admin@example.com" "password"
+    And I go to the dashboard
 
   Scenario: Logging in Successfully
     When I fill in "Email" with "admin@example.com"

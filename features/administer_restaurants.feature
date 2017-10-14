@@ -4,7 +4,7 @@ Feature: Admin can administer restaurants
   I would like to be able to create, read, update and delete restaurants
 
   Background:
-    Given the following category exists
+    Given the following restaurant category exists
       | name        | description |
       | Thai        | Thai food   |
 
