@@ -1,5 +1,13 @@
 class RestaurantsController < ApplicationController
-  before_action :find_cart
+  before_action :find_cart, :get_user_location
+
+  def get_user_location
+    if request.location
+      @user_location = request.location
+    else
+      @user_location = 'Stockholm Sweden'
+    end
+  end
 
   def index
     @categories = RestaurantCategory.all
