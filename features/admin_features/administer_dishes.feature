@@ -47,7 +47,7 @@ Feature: Admin can administer dishes
     Then I click "Create Dish category"
     And I should see "Dish category was successfully created."
 
-  Scenario: Admin edits category
+  Scenario: Admin edits dish category
     Given I click "Dish Categories"
     Then I click "Edit" for "Main" dish category
     And I fill in "Name" with "Starter"

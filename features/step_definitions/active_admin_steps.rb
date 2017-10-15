@@ -60,3 +60,29 @@ end
 #     click_link_or_button link
 #   end
 # end
+
+Then("I select {string} from menu category dropdown") do |option|
+  select option, from: "menu[restaurant_id]"
+end
+
+Then("I click {string} for {string} menu") do |link, menu_name|
+  menu = Menu.find_by(name: menu_name)
+  within("#menu_#{menu.id}") do
+    click_link_or_button link
+  end
+end
+
+Then("I select {string} from menu line dropdown") do |option|
+  select option, from: "menu_line[menu_id]"
+end
+#menu_line_dish_id
+Then("I select {string} from dish line dropdown") do |option|
+  select option, from: "menu_line[dish_id]"
+end
+
+Then("I click {string} for {string} menu line") do |link, menu_line_name|
+  menu_line = MenuLine.find_by(name: menu_line_name)
+  within("#menu_line_#{menu_line.id}") do
+    click_link_or_button link
+  end
+end
