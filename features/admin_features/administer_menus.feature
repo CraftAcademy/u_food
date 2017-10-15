@@ -1,7 +1,7 @@
-Feature: Admin can administer dishes
+Feature: Admin can administer menus
   As admin
-  I order to maintain dishes
-  I would like to be able to create, read, update and delete dishes
+  I order to maintain menus
+  I would like to be able to create, read, update and delete menus
 
   Background:
     Given the following restaurants with associations exist
@@ -11,8 +11,8 @@ Feature: Admin can administer dishes
 
     And the following dishes exists
       | name        | description         | price | pic_url               | dish_category | menu_name |
-      | Sushi rolls | Tasty Japanese food | 10    | https://goo.gl/fH7P5F | Main          | Lunch     |
       | Dumplings   | Tasty Japanese food | 15    | https://goo.gl/qKCyL5 | Main          | Lunch     |
+      | Sushi rolls | Tasty Japanese food | 10    | https://goo.gl/fH7P5F | Main          | Lunch     |
 
     And An admin exists "admin@example.com" "password"
     And I am logged in as admin
@@ -48,16 +48,3 @@ Feature: Admin can administer dishes
     And I select "Dumplings" from dish line dropdown
     Then I click "Create Menu line"
     And I should see "Menu line was successfully created."
-
-  Scenario: Admin edits category
-    Given I click "Menu Lines"
-    Then I click "Edit" for "Sushi rolls" menu line
-    When I click "Update Menu line"
-    Then I should see "Menu line was successfully updated."
-
-  @javascript
-  Scenario: Admin deletes dish category
-    Given I click "Menu Lines"
-    Then I click "Delete" for "Dumplings" menu line
-#    And I click ok on alert box
-    Then I should see "Menu line was successfully destroyed."
