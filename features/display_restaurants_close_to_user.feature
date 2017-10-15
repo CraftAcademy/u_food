@@ -10,6 +10,8 @@ Feature:
       | Yappi | Hamngatan 37 111 53 Stockholm | Some hip thai place | Japanese          | Lunch     |
       | Happi | Hamngatan 27 111 53 Stockholm | Some hip food place | Japanese          | Lunch     |
       | Nappi | Kungsgatan 45 702 24 Orebro   | Some bad food place | Japanese          | Lunch     |
-    When I navigate to the index page
-    And the map has been loaded
+    And I navigate to the index page
+    Then I should see the text "Yappi"
+    And I should not see the text "Nappi"
+    When the map has been loaded
     Then I should see "3" pins on the map
