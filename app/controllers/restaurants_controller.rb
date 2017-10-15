@@ -3,15 +3,17 @@ class RestaurantsController < ApplicationController
 
   def get_user_location
     if request.location.city != ''
-      @user_location = request.location
+      @user_location_lat = request.location.latitude
+      @user_location_lng = request.location.longitude
     else
-      @user_location = 'Stockholm Sweden'
+      @user_location_lat = 59.334591
+      @user_location_lng = 18.063240
     end
   end
 
   def index
     @categories = RestaurantCategory.all
-    @restaurants = Restaurant.near(@user_location, 0.5, units: :km).for_markers
+    @restaurants = Restaurant.near([@user_location_lat, @user_location_lng], 0.5, units: :km).for_markers
   end
 
   def show
