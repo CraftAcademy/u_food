@@ -11,7 +11,7 @@ class RestaurantsController < ApplicationController
 
   def index
     @categories = RestaurantCategory.all
-    @restaurants = Restaurant.for_markers
+    @restaurants = Restaurant.near(@user_location, 0.5, units: :km).for_markers
   end
 
   def show
