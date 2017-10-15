@@ -55,10 +55,3 @@ Feature: Admin can administer restaurants
     And I fill in "Description" with "Chinese food"
     When I click "Update Restaurant category"
     Then I should see "Restaurant category was successfully updated."
-
-#  @javascript
-#  Scenario: Admin deletes restaurant category
-#    Given I click "Restaurant Categories"
-#    Then I click "Delete" for "Thai" restaurant category
-##    And I click ok on alert box
-#    Then I should see "Restaurant category was successfully destroyed."
