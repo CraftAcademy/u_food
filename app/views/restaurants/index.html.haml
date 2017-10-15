@@ -11,10 +11,10 @@
   %h3= category.name
   %p= category.description
   .temp_box2
-  - category.restaurants.each do |restaurant|
+  -#- user_location = request.safe_location
+  - category.restaurants.near('Stockholm Sweden', 1, units: :km).each do |restaurant|
     = link_to restaurant.name, restaurant_path(restaurant)
     %p= restaurant.address
 
 #map{style: 'width: 800px; height: 400px', data: {test: {env: "#{Rails.env.test?}"}}}
 #restaurants_addresses{data: {addresses: "#{@restaurants.to_json}"}}
-
