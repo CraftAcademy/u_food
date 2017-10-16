@@ -1,10 +1,10 @@
 Feature:
   As a user,
   In order to find a restaurant
-  I would like to see only restaurants close by (500 meters)
+  I would like to see only restaurants close by (3 km)
 
   @javascript
-  Scenario: Restaurants only show up when close to the user (500 meter)
+  Scenario: Restaurants only show up when close to the user (3 km)
     Given the following restaurants with associations exist
       | name  | address                       | description         | res_category_name | menu_name |
       | Yappi | Hamngatan 37 111 53 Stockholm | Some hip thai place | Japanese          | Lunch     |
