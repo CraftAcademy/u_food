@@ -19,7 +19,7 @@ Feature: Admin can administer users
     And I fill in "Email" with "admin2@example.com"
     And I fill in "Password*" with "password"
     And I fill in "Password confirmation" with "password"
-    And I fill in "Admin" with "true"
+    And I click_on_checkbox "Admin"
     And I click "Create Admin user"
     Then I should see "Admin user was successfully created."
 

@@ -64,3 +64,7 @@ end
 Then("I select {string} from dish line dropdown") do |option|
   select option, from: "menu_line[dish_id]"
 end
+
+Then("I click_on_checkbox {string}") do |box|
+  check box
+end
