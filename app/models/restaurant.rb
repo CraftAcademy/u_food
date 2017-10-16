@@ -1,8 +1,8 @@
 class Restaurant < ApplicationRecord
   belongs_to :restaurant_category
   validates :address, presence: true
-  geocoded_by :address   # can also be an IP address
-  after_validation :geocode          # auto-fetch coordinates
+  geocoded_by :address
+  after_validation :geocode
   has_many :menus, dependent: :destroy
   has_many :dishes, through: :menus
   has_many :dish_categories, through: :dishes
