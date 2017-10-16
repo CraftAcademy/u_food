@@ -13,7 +13,7 @@ Feature: Admin can administer users
     Then I click "New User"
     And I fill in "Email" with "user@example.com"
 
-  Scenario: Add new restaurant owner
+  Scenario: Add new admin owner
     Given I click "Admin Users"
     Then I click "New Admin User"
     And I fill in "Email" with "admin2@example.com"
@@ -23,3 +23,12 @@ Feature: Admin can administer users
     And I click "Create Admin user"
     Then I should see "Admin user was successfully created."
 
+  Scenario: Admin updates admin user
+    Given I click "Admin Users"
+    Then I click "Edit" for "restaurant_owner@example.com" admin user
+    And I fill in "Email" with "owner@example.com"
+    And I fill in "Password*" with "password2"
+    And I fill in "Password confirmation" with "password2"
+    And I click_on_checkbox "Admin"
+    When I click "Update Admin user"
+    Then I should see "Admin user was successfully updated."
