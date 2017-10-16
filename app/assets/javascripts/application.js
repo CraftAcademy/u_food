@@ -11,7 +11,10 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
-//= require_tree .
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
+//= require gmap
+//= require landing_page
+///= require_tree .
+

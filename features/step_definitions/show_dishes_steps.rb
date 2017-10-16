@@ -1,5 +1,3 @@
-
-
 Given('the following dishes exists') do |table|
   table.hashes.each do |hash|
     category = find_or_create_dish_category(hash)
@@ -21,7 +19,6 @@ Given('the following restaurants with associations exist') do |table|
     FactoryGirl.create(:restaurant_with_associations, hash)
   end
 end
-
 
 And(/^show me the page$/) do
   save_and_open_page
