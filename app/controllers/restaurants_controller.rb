@@ -1,15 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :find_cart, :get_user_location
 
-  def get_user_location
-    if request.location.coordinates != [0.0, 0.0]
-      @user_location = request.location.coordinates
-    else
-      @user_location = [59.334591, 18.063240]
-    end
-    # near(@user_location, 3, units: :km)
-  end
-
   def index
     @categories = RestaurantCategory.all
     @restaurants = Restaurant.near(@user_location, 3, units: :km).for_markers
@@ -26,6 +17,14 @@ class RestaurantsController < ApplicationController
           line.menu.restaurant == @restaurant
         end
       end
+    end
+  end
+
+  def get_user_location
+    if request.location.coordinates != [0.0, 0.0]
+      @user_location = request.location.coordinates
+    else
+      @user_location = [59.334591, 18.063240]
     end
   end
 end
