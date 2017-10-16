@@ -14,4 +14,13 @@ ActiveAdmin.setup do |config|
 
   config.localize_format = :long
 
+  config.authorization_adapter = ActiveAdmin::CanCanAdapter
+
+  ActiveAdmin::ResourceController.class_eval do
+    protected
+
+    def current_ability
+      @current_ability ||= AdminAbility.new(current_admin_user)
+    end
+  end
 end

@@ -10,8 +10,7 @@ ActiveAdmin.register RestaurantCategory do
       column :created_at, sortable: :created_at
       column :updated_at, sortable: :updated_at
 
-      binding.pry
-      if current_user.admin?
+      if current_admin_user.admin?
         action
       else
         actions
