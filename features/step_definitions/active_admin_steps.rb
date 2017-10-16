@@ -68,3 +68,15 @@ end
 Then("I click_on_checkbox {string}") do |box|
   check box
 end
+
+Then("I click {string} for {string} admin user") do |link, email|
+  admin_user = AdminUser.find_by(email: email)
+  within("#admin_user_#{admin_user.id}") do
+    click_link_or_button link
+  end
+end
+
+Given("An admin exists {string} {string} {string}") do |email, password, state|
+  state == 'true' ? condition = true : condition = false
+  FactoryGirl.create(:admin_user, email: email, password: password, admin: condition)
+end

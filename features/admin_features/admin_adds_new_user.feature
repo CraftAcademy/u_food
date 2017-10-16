@@ -5,6 +5,7 @@ Feature: Admin can administer users
 
   Background:
     Given An admin exists "admin@example.com" "password"
+    Given An admin exists "restaurant_owner@example.com" "password" "false"
     And I am logged in as admin
     And I go to the dashboard
 
