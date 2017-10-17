@@ -1,5 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :find_cart, :get_user_location
+  LOCALHOST_IP = '127.0.0.1'
+  DEFAULT_IP_LOCATION_STHLM = '130.237.186.207'
 
   def index
     @categories = RestaurantCategory.all
@@ -21,10 +23,10 @@ class RestaurantsController < ApplicationController
   end
 
   def get_user_location
-    if request.location.coordinates != [0.0, 0.0]
-      @user_location = request.location.coordinates
+    if request.remote_ip == LOCALHOST_IP
+      @user_location = DEFAULT_IP_LOCATION_STHLM
     else
-      @user_location = [59.334591, 18.063240]
+      @user_location = request.remote_ip
     end
   end
 end
