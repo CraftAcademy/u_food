@@ -16,20 +16,21 @@ RSpec.describe AdminUser, type: :model do
 
   describe 'Admin user' do
     describe 'abilities' do
-      let(:admin){nil}
+      let(:admin) {nil}
 
       context 'when is an super admin' do
-        let(:admin){ FactoryGirl.create(:admin_user) }
-        subject(:ability){ Ability.new(admin) }
+        let(:admin) {FactoryGirl.create(:admin_user)}
+        subject(:ability) {Ability.new(admin)}
 
         it 'can manage all' do
           assert ability.can?(:manage, :all)
-        end      end
+        end
+      end
 
 
       context 'when is an restaurant owner' do
-        let(:admin){ FactoryGirl.create(:admin_user, super_admin: false) }
-        subject(:ability){ Ability.new(admin) }
+        let(:admin) {FactoryGirl.create(:admin_user, super_admin: false)}
+        subject(:ability) {Ability.new(admin)}
 
         it 'can read all' do
           assert ability.can?(:read, :all)
@@ -39,8 +40,6 @@ RSpec.describe AdminUser, type: :model do
           assert ability.cannot?(:manage, :all)
         end
       end
-
-
     end
   end
 end
