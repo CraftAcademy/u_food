@@ -26,7 +26,7 @@ function performGeolocation() {
                         content: '<p>You are here!</p>'
                     }
                 });
-                displayRestaurantMarkers(map);
+                displayRestaurantMarkers(map, latitude, longitude);
             },
             error: function (error) {
                 alert('Geolocation failed: ' + error.message);
@@ -35,8 +35,6 @@ function performGeolocation() {
                 alert('Your browser does not support geolocation');
             }
         });
-
-
     } else {
         latitude = 59.334591;
         longitude = 18.063240;
@@ -49,22 +47,24 @@ function performGeolocation() {
                 content: '<p>You are here!</p>'
             }
         });
-        displayRestaurantMarkers(map);
+        displayRestaurantMarkers(map, latitude, longitude);
     }
-
 }
 
-function displayRestaurantMarkers(map) {
-    var restaurants = JSON.parse(document.getElementById('restaurants_addresses').dataset.addresses);
-    restaurants.forEach(function (restaurant) {
-        console.log(restaurant);
-        map.addMarker({
-            lat: restaurant.latitude,
-            lng: restaurant.longitude,
-            title: restaurant.name,
-            infoWindow: {
-                content: 'Restaurant ' + restaurant.name
-            }
+function displayRestaurantMarkers(map, lat, lng) {
+    var url = '/restaurants?lat=' + lat + '&lng=' + lng;
+    $.getJSON(url, function (response) {
+        var restaurants = response.restaurants;
+        restaurants.forEach(function (restaurant) {
+            console.log(restaurant);
+            map.addMarker({
+                lat: restaurant.latitude,
+                lng: restaurant.longitude,
+                title: restaurant.name,
+                infoWindow: {
+                    content: 'Restaurant ' + restaurant.name
+                }
+            });
         });
-    });
+    })
 }

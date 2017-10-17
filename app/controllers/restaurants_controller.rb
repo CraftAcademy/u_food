@@ -4,8 +4,15 @@ class RestaurantsController < ApplicationController
   DEFAULT_IP_LOCATION_STHLM = '130.237.186.207'
 
   def index
-    @categories = RestaurantCategory.all
-    @restaurants = Restaurant.near(@user_location, 3, units: :km).for_markers
+    respond_to do |format|
+      format.html do
+        @categories = RestaurantCategory.all
+      end
+      format.json do
+        @restaurants = Restaurant.near(@user_location, 3, units: :km).for_markers
+        render json: {restaurants: @restaurants}
+      end
+    end
   end
 
   def show
@@ -23,19 +30,12 @@ class RestaurantsController < ApplicationController
   end
 
   def get_user_location
-    if request.remote_ip == LOCALHOST_IP
-      @user_location = DEFAULT_IP_LOCATION_STHLM
+    if params['lat'] && params['lng']
+      @user_location = [params['lat'], params['lng']]
+    elsif request.remote_ip == LOCALHOST_IP
+      @user_location = Geocoder.coordinates(DEFAULT_IP_LOCATION_STHLM)
     else
-      @user_location = request.remote_ip
+      @user_location = request.location.coordinates
     end
-    @ip_location = Geocoder.coordinates(@user_location)
   end
-
-  # def get_user_location
-  #   if request.location.coordinates != [0.0, 0.0]
-  #     @user_location = request.location.coordinates
-  #   else
-  #     @user_location = [59.334591, 18.063240]
-  #   end
-  # end
 end
