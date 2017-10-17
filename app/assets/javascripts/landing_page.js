@@ -2,8 +2,8 @@ function initiateMap() {
     map = GMaps({
         div: '#map',
         zoom: 15,
-        lat: 57.7089,
-        lng: 11.9746
+        lat: 59.334591,
+        lng: 18.063240
     });
     performGeolocation();
 };
