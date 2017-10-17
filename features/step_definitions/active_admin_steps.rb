@@ -78,5 +78,5 @@ end
 
 Given("An admin exists {string} {string} {string}") do |email, password, state|
   state == 'true' ? condition = true : condition = false
-  FactoryGirl.create(:admin_user, email: email, password: password, admin: condition)
+  FactoryGirl.create(:admin_user, email: email, password: password, super_admin: condition)
 end
