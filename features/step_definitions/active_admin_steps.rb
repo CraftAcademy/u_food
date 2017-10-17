@@ -76,7 +76,7 @@ Then("I click {string} for {string} admin user") do |link, email|
   end
 end
 
-Given("An admin exists {string} {string} {string}") do |email, password, state|
+Given("An admin exists {string} with {string} and super_admin {string}") do |email, password, state|
   state == 'true' ? condition = true : condition = false
   FactoryGirl.create(:admin_user, email: email, password: password, super_admin: condition)
 end

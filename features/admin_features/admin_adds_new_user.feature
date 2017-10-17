@@ -5,11 +5,11 @@ Feature: Admin can administer users
 
   Background:
     Given An admin exists "admin@example.com" "password"
-    Given An admin exists "restaurant_owner@example.com" "password" "false"
+    Given An admin exists "restaurant_owner@example.com" with "password" and super_admin "false"
     And I am logged in as admin
     And I go to the dashboard
 
-  Scenario: Add new admin owner
+  Scenario: Add new super admin
     Given I click "Admin Users"
     Then I click "New Admin User"
     And I fill in "Email" with "admin2@example.com"
@@ -25,7 +25,6 @@ Feature: Admin can administer users
     And I fill in "Email" with "owner@example.com"
     And I fill in "Password*" with "password2"
     And I fill in "Password confirmation" with "password2"
-    And I click_on_checkbox "Super admin"
     When I click "Update Admin user"
     Then I should see "Admin user was successfully updated."
 
