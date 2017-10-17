@@ -56,7 +56,6 @@ function displayRestaurantMarkers(map, lat, lng) {
     $.getJSON(url, function (response) {
         var restaurants = response.restaurants;
         restaurants.forEach(function (restaurant) {
-            console.log(restaurant);
             map.addMarker({
                 lat: restaurant.latitude,
                 lng: restaurant.longitude,
