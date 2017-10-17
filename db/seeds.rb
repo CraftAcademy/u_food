@@ -6,7 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-AdminUser.create!(email: 'admin_features@example.com', password: 'password', password_confirmation: 'password')
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', super_admin: true)
+AdminUser.create!(email: 'restaurant_owner@example.com', password: 'password', password_confirmation: 'password')
 
 ['Thai', 'Italian', 'Traditional Nordic'].each do |restaurant_category|
   RestaurantCategory.create([{
