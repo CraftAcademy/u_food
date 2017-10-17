@@ -5,6 +5,8 @@
   = link_to 'Sign In', user_session_path
 
 %h1 Ufoods
+Is this your location?! 
+= @user_location
 %p What do you feel like tonight?
 - @categories.each do |category|
   .temp_box
