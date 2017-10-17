@@ -28,5 +28,14 @@ class RestaurantsController < ApplicationController
     else
       @user_location = request.remote_ip
     end
+    @ip_location = Geocoder.coordinates(@user_location)
   end
+
+  # def get_user_location
+  #   if request.location.coordinates != [0.0, 0.0]
+  #     @user_location = request.location.coordinates
+  #   else
+  #     @user_location = [59.334591, 18.063240]
+  #   end
+  # end
 end
