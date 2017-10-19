@@ -47,6 +47,7 @@ We automatically deploy this app with [Heroku](https://www.heroku.com/).
 MIT license
 
 ### Acknowledgments
+The entire project is comprised of open source code so a huge **THANKS!** to the open source community.  
 Built with help from the coaches and some cool gems. Thanks a lot! Coaches:
 * [Tochman](https://github.com/tochman)
 * [Diraoulo](https://github.com/diraulo)
