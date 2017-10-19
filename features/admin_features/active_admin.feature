@@ -4,7 +4,9 @@ Feature: Admin can administer all objects
   I would like to be able to create, update and delete on all objects the system
 
   Background:
-    Given An admin exists "admin@example.com" "password"
+    Given The following admins exist
+      | email             | password | super_admin |
+      | admin@example.com | password | yes         |
     And I go to the dashboard
 
   Scenario: Logging in Successfully

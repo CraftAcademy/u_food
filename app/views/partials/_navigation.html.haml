@@ -1,21 +1,23 @@
-%nav.navbar.navbar-expand-lg.navbar-light.fixed{:style => 'background-color: #ffad33;'}
-  = link_to 'UFoods', root_path, class: 'navbar-brand'
-  %span.navbar-toggler-icon
-  #navbarSupportedContent.collapse.navbar-collapse
-    %ul#links.navbar-nav.navbar-right
-      - if current_user
-        %li.navbar-text
-          Logged in as: #{current_user.email}
+%nav.navbar.navbar-expand-lg.navbar-light.fixed{style: 'background-color: #e1a332;'}
+  .container
+    = link_to 'UFoods', root_path, class: 'navbar-brand'
+    %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.navbar-right
+        - if current_user
+          %li.navbar-text
+            Logged in as: #{current_user.email}
+          %li.nav-item
           - if @cart
-            Cart:
-            = @cart.total_unique_items
             - if @cart.shopping_cart_items.any?
               %li.nav-item
-                = link_to 'Show cart' , cart_path(@cart), class: 'nav-link'
+                = link_to cart_path(@cart) do
+                  .glyphicon.glyphicon-shopping-cart
+                  = @cart.total_unique_items
+            %li.nav-item
+              = link_to 'Sign Out', destroy_user_session_path, method: :delete
+        - else
           %li.nav-item
-            = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'navbar-right'
-      - else
-        %li.nav-item
-          = link_to 'Sign Up', new_user_registration_path, class: 'nav-link'
-        %li.nav-item
-          = link_to 'Sign in', new_user_session_path, class: 'nav-link'
+            = link_to 'Sign Up', new_user_registration_path, class: 'nav-link'
+          %li.nav-item
+            = link_to 'Sign in', new_user_session_path, class: 'nav-link'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171017044422) do
+ActiveRecord::Schema.define(version: 20171018131437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,6 +114,9 @@ ActiveRecord::Schema.define(version: 20171017044422) do
     t.text "description"
     t.float "latitude"
     t.float "longitude"
+    t.bigint "admin_user_id"
+    t.string "pic_url"
+    t.index ["admin_user_id"], name: "index_restaurants_on_admin_user_id"
     t.index ["restaurant_category_id"], name: "index_restaurants_on_restaurant_category_id"
   end
 
@@ -137,5 +140,6 @@ ActiveRecord::Schema.define(version: 20171017044422) do
   add_foreign_key "carts", "users"
   add_foreign_key "dishes", "dish_categories"
   add_foreign_key "menus", "restaurants"
+  add_foreign_key "restaurants", "admin_users"
   add_foreign_key "restaurants", "restaurant_categories"
 end

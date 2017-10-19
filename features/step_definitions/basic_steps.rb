@@ -28,7 +28,7 @@ Then("I click {string} within id {string}") do |input, object|
   end
 end
 
-
 And(/^show me the page$/) do
   save_and_open_page
 end
+

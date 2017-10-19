@@ -4,9 +4,12 @@ Feature: Admin can administer users
   I would like to be able to create, read, update and delete users
 
   Background:
-    Given An admin exists "admin@example.com" "password"
-    Given An admin exists "restaurant_owner@example.com" with "password" and super_admin "false"
-    And I am logged in as admin
+    Given The following admins exist
+      | email                        | password | super_admin |
+      | admin@example.com            | password | yes         |
+      | restaurant_owner@example.com | password | no          |
+
+    And I am logged in to AA as "admin@example.com"
     And I go to the dashboard
 
   Scenario: Add new super admin

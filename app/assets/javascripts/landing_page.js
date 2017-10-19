@@ -12,6 +12,7 @@ function performGeolocation() {
     var latitude;
     var longitude;
     var testing_env = document.getElementById('map').dataset.testEnv;
+    var pinImage = new google.maps.MarkerImage('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
     if (testing_env === 'false') {
         GMaps.geolocate({
             success: function (position) {
@@ -22,6 +23,7 @@ function performGeolocation() {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude,
                     title: 'You are here',
+                    icon: pinImage,
                     infoWindow: {
                         content: '<p>You are here!</p>'
                     }
@@ -53,6 +55,7 @@ function performGeolocation() {
 
 function displayRestaurantInProximity(map, lat, lng) {
     var url = '/restaurants?lat=' + lat + '&lng=' + lng;
+    var pinImage = new google.maps.MarkerImage('http://maps.google.com/mapfiles/ms/icons/orange-dot.png');
     $.getJSON(url, function (response) {
         var restaurants = response.restaurants;
         var grouped = response.grouped;
@@ -62,8 +65,9 @@ function displayRestaurantInProximity(map, lat, lng) {
                 lat: restaurant.latitude,
                 lng: restaurant.longitude,
                 title: restaurant.name,
+                icon: pinImage,
                 infoWindow: {
-                    content: 'Restaurant ' + restaurant.name
+                    content: '<a href="/restaurants/' + restaurant.id + '">' + restaurant.name + '</a>' + '</br>' + restaurant.description
                 }
             });
         });

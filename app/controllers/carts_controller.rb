@@ -8,7 +8,7 @@ class CartsController < ApplicationController
       @cart.add(dish, dish.price, params[:amount].to_i)
       flash[:notice] = "#{dish.name} added to cart: #{params[:amount]}"
     else
-      flash[:notice] = 'Please enter a number'
+      flash[:warning] = 'Please enter a number'
     end
     redirect_back(fallback_location: (request.referer || restaurant_path(params[:restaurant_id])))
   end
@@ -20,7 +20,7 @@ class CartsController < ApplicationController
       @cart.remove(dish, params[:remove_amount].to_i)
       flash[:notice] = "#{params[:remove_amount]} #{dish.name} was removed from your cart"
     else
-      flash[:notice] = 'Please enter a number'
+      flash[:warning] = 'Please enter a number'
     end
     redirect_back(fallback_location: (request.referer || restaurant_path(params[:restaurant_id])))
   end

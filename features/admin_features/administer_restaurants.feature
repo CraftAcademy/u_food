@@ -9,8 +9,11 @@ Feature: Admin can administer restaurants
       | My Thai | Stockholm | Some hip thai place | Thai              | Lunch     |
       | My Mex  | Stockholm | Mexican tacos       | Mexican           | Lunch     |
 
-    And An admin exists "admin@example.com" "password"
-    And I am logged in as admin
+    And The following admins exist
+      | email             | password | super_admin |
+      | admin@example.com | password | yes         |
+
+    And I am logged in to AA as "admin@example.com"
     And I go to the dashboard
 
   Scenario: Admin adds new restaurant

@@ -14,8 +14,11 @@ Feature: Admin can administer menus
       | Dumplings   | Tasty Japanese food | 15    | https://goo.gl/qKCyL5 | Main          | Lunch     |
       | Sushi rolls | Tasty Japanese food | 10    | https://goo.gl/fH7P5F | Main          | Lunch     |
 
-    And An admin exists "admin@example.com" "password"
-    And I am logged in as admin
+    And The following admins exist
+      | email             | password | super_admin |
+      | admin@example.com | password | yes         |
+
+    And I am logged in to AA as "admin@example.com"
     And I go to the dashboard
 
   Scenario: Admin adds new menu

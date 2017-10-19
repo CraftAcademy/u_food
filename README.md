@@ -82,6 +82,8 @@ end
 We automatically deploy this app with [Heroku](https://www.heroku.com/).
 
 ## Built With
+
+#### Main Gems and Helpers
 * [Rails](https://github.com/rails/rails)
 * [Acts_as_a_shopping_cart](https://github.com/crowdint/acts_as_shopping_cart)
 * [Gmaps.js](https://hpneo.github.io/gmaps/)
@@ -90,6 +92,22 @@ We automatically deploy this app with [Heroku](https://www.heroku.com/).
 * [Devise](https://github.com/plataformatec/devise)
 * [Bootstrap-sass](https://github.com/twbs/bootstrap-sass)
 * [Geocoder](https://github.com/alexreisner/geocoder)
+* [Faker](https://github.com/stympy/faker)
+* [Haml-rails](https://github.com/indirect/haml-rails)
+
+#### Development Gems
+* [Pry Byebug](https://github.com/deivid-rodriguez/pry-byebug)
+* [Erd](https://github.com/amatsuda/erd)
+
+#### Testing Gems
+* [Rspec-rails](https://github.com/rspec/rspec-rails)
+* [Shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers)
+* [Factory_girl_rails](https://github.com/thoughtbot/factory_girl_rails)
+* [Cucumber-rails](https://github.com/cucumber/cucumber-rails)
+* [Coveralls](https://rubygems.org/gems/coveralls/versions/0.8.15)
+* [Database_cleaner](https://github.com/DatabaseCleaner/database_cleaner)
+* [Launchy](https://github.com/copiousfreetime/launchy)
+* [Poltergeist](https://github.com/teampoltergeist/poltergeist)
 
 ## Authors
 * [BasilMawejje](https://github.com/BasilMawejje)

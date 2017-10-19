@@ -31,8 +31,8 @@ Feature: user can can add dish to order
     And I fill in field "amount" and id "Sushi rolls" with "1"
     And I click "Add to cart" within id "Sushi rolls"
     Then I should see the text "Sushi rolls added to cart: 1"
-    And I should see the text "Cart: 1"
-    And I click "Show cart"
+    And My order should contain "1" item
+    And I click "1"
     Then I should see the text "1"
     And I should see the text "Sushi rolls"
     And I should see the text "Total items: 1"
@@ -44,8 +44,8 @@ Feature: user can can add dish to order
     And I fill in field "amount" and id "Dumplings" with "2"
     And I click "Add to cart" within id "Dumplings"
     Then I should see the text "Dumplings added to cart: 2"
-    And I should see the text "Cart: 2"
-    And I click "Show cart"
+    And My order should contain "2" item
+    And I click "2"
     Then I should see the text "2"
     And I should see the text "Dumplings"
     And I should see the text "Total items: 2"

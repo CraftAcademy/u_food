@@ -16,6 +16,11 @@ end
 
 Given('the following restaurants with associations exist') do |table|
   table.hashes.each do |hash|
-    FactoryGirl.create(:restaurant_with_associations, hash)
+    if hash[:restaurant_owner]
+      restaurant_owner = AdminUser.find_by(email: hash[:restaurant_owner])
+      hash.except!('restaurant_owner')
+    end
+    restaurant = FactoryGirl.create(:restaurant_with_associations, hash)
+    restaurant.update(admin_user: restaurant_owner) unless restaurant_owner.nil?
   end
 end

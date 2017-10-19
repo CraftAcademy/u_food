@@ -16,6 +16,7 @@ ActiveAdmin.setup do |config|
 
   config.authorization_adapter = ActiveAdmin::CanCanAdapter
 
+
   ActiveAdmin::ResourceController.class_eval do
     protected
 

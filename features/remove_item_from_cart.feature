@@ -47,14 +47,14 @@ Feature: remove item from cart
     Then I should see "Please enter a number"
 
   Scenario: User clears cart
-    Given I click "Show cart"
+    Given I click "3"
     And I should see the text "Total items: 3"
     And I click "Clear cart"
     Then My order should contain "0" item
     Then I should be on the restaurant page
 
   Scenario: User clicks remove item on cart page
-    Given I click "Show cart"
+    Given I click "3"
     And I click "Remove from cart" within id "Sushi rolls"
     Then I should see "Sushi rolls was removed from your cart"
     And My order should contain "2" item

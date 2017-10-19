@@ -3,11 +3,102 @@
 
 .navbar-nav > li >a{
   display: block;
-  padding: 15px;
+  padding-left: 30px;
+  line-height: 30px;
   color:white;
+  font-size: 20px;
   list-style-type: none;
+}
+
+.navbar-nav > li >a:hover {
+  color: #730E15;
+  text-decoration: none;
+}
+
+li.navbar-text {
+  display: block;
+  color:white;
+  padding-right: 20px;
+  font-size: 20px;
+  list-style-type: none;
+}
+
+.navbar-brand {
+  color: white;
+  font-size: 30px;
+}
+
+a:hover.navbar-brand {
+  color: #730E15;
 }
 
 ul {
   list-style-type: none
+}
+
+h1 {
+  text-align: center;
+  color: #730E15;
+  font-size: 60px;
+  padding-bottom: 20px;
+}
+
+#categories {
+  padding-bottom: 20px;
+}
+
+h3 {
+  color: #e1a332;
+}
+
+h3:hover {
+  color: #730E15;
+}
+
+h3.restaurant_list {
+  text-align: center;
+  padding-top: 20px;
+}
+
+a {
+  color: #e1a332;
+}
+
+a:hover {
+  color: #730E15;
+}
+
+.footer {
+  background-color: #e1a332;
+  color: white;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.col-sm-4 {
+  padding-bottom: 10px;
+}
+
+.thumbnail {
+  border: none;
+}
+
+.category_name {
+  color: #730E15;
+}
+
+.logo {
+  font-size: 60px;
+  color: #e1a332;
+  text-align: center;
+}
+
+.style_front_image {
+  height: 200;
+  width: 100%;
+}
+
+.logo_pic {
+  width: 15%;
 }

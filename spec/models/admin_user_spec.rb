@@ -14,6 +14,10 @@ RSpec.describe AdminUser, type: :model do
     it {is_expected.to have_db_column :super_admin}
   end
 
+  describe 'associations' do
+    it { is_expected.to have_many(:restaurants) }
+  end
+
   describe 'Admin user' do
     describe 'abilities' do
       let(:admin) {nil}
@@ -32,7 +36,7 @@ RSpec.describe AdminUser, type: :model do
         subject(:ability) {Ability.new(admin)}
 
         it 'can read all' do
-          expect(ability.can?(:read, :all)).to eq true
+          expect(ability.can?(:manage, Restaurant, admin_user: admin)).to eq true
         end
 
         it 'can not manage all' do

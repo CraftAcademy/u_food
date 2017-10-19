@@ -1,19 +1,19 @@
 !!!
 %html
   %head
+    = favicon_link_tag(source='favicon.ico')
     %meta{content: 'text/html; charset=UTF-8', http: {equiv: 'Content-Type'}}/
     %title UFoods
     = csrf_meta_tags
+    %link{href:'//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', rel: 'stylesheet'}/
     = stylesheet_link_tag 'application', media: 'all', data: {turbolinks: {track: 'reload'}}
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     %script(src="https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_KEY']}&libraries=places&callback=initiateMap" async defer)
   %body
     = render 'partials/navigation'
     .container-fluid
-      - if flash
-        - flash.each do |name, message|
-          - if name == 'alert'
-            .alert= message
-          - if name == 'notice'
-            .notice= message
-      = yield
+      .container
+        - flash.each do |key, value|
+          = content_tag(:div, value, class: ['text-center', flash_class(key)])
+  = yield
+  = render 'partials/footer'
