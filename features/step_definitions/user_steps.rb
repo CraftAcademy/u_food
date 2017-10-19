@@ -10,8 +10,8 @@ end
 
 Given("the following user is signed in") do |table|
   table.hashes.each do |hash|
-    user = User.find_by(email: hash[:email])
-    login_as(user, scope: :user)
+    @user = User.find_by(email: hash[:email])
+    login_as(@user, scope: :user)
   end
 end
 

@@ -14,18 +14,21 @@ Given("I click {string}") do |link|
   click_link_or_button link
 end
 
-Then("I fill in field {string} and id {string} with {string}") do |field, id, input|
-  within("//div[@id='#{id}']") do
+Then("I fill in field {string} and id {string} with {string}") do |field, object, input|
+  dish = Dish.find_by(name: object)
+  within("#dish-#{dish.id}") do
     fill_in field, with: input
   end
 end
 
-Then("I click {string} within id {string}") do |input, id|
-  within("//div[@id='#{id}']") do
+Then("I click {string} within id {string}") do |input, object|
+  dish = Dish.find_by(name: object)
+  within("#dish-#{dish.id}") do
     click_link_or_button input
   end
 end
 
-Then("I should not see {string}") do |message|
-  expect(page).to have_no_content message
+And(/^show me the page$/) do
+  save_and_open_page
 end
+

@@ -1,7 +1,7 @@
 In cart:
 - @cart.shopping_cart_items.each do |dish|
   %p
-    %div{id: dish.item.name}
+    %div{id: "dish-#{dish.item.id}"}
       = dish.quantity
       = dish.item.name
       = dish.price
@@ -21,4 +21,10 @@ In cart:
   $
 - if  @cart.shopping_cart_items.any?
   = link_to 'Clear cart', cart_clear_cart_path(@cart, restaurant_id: @restaurant.id), class: 'btn btn-primary'
+=# link_to 'Pay with Card', new_charge_path, class: 'btn btn-primary'
+= form_tag charges_path do
+  = hidden_field_tag :cart_id, @cart.id
+  %script.stripe-button{ src: 'https://checkout.stripe.com/checkout.js',
+      data: {amount: @cart.total*100, description: 'Whatever', key: ENV['STRIPE_PUBLISHABLE_KEY'], currency: 'sek'}}
+= link_to 'Home', root_path, class: 'btn btn-primary'
 = link_to 'Back to restaurant', restaurant_path(@restaurant), class: 'btn btn-primary'

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root controller: :restaurants, action: :index
   resources :restaurants
   resources :dishes
+  resources :charges
   resources :carts do
     get :remove_item
     get :clear_cart

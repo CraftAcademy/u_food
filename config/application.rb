@@ -25,6 +25,9 @@ module UFood
       generate.controller_specs false
     end
     config.generators.system_tests = nil
+    config.stripe.secret_key = ENV['STRIPE_SECRET_KEY']
+    config.stripe.publishable_key = ENV['STRIPE_PUBLISHABLE_KEY']
+    #config.stripe.endpoint = '/payment/stripe-integration'
 
   end
 end

@@ -11,7 +11,7 @@
 .br
   - if @current_dish_category
     - @current_category_dishes.each do |dish|
-      %div{id: dish.name}
+      %div{id: "dish-#{dish.id}"}
         %strong
           Dish:
           = dish.name

@@ -6,11 +6,17 @@ class RestaurantsController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        @categories = RestaurantCategory.all
+        if @user_location
+          collection = Restaurant.near(@user_location, 3, units: :km)
+        else
+          collection = Restaurant.all
+        end
+        @collection = collection.group_by(&:restaurant_category)
       end
       format.json do
-        @restaurants = Restaurant.near(@user_location, 3, units: :km).for_markers
-        render json: {restaurants: @restaurants}
+        @restaurants = Restaurant.near(@user_location, 3, units: :km)
+        render json: {restaurants: @restaurants.for_markers,
+                      grouped: @restaurants.group_by {|obj| obj.restaurant_category.name} }
       end
     end
   end

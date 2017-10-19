@@ -32,8 +32,8 @@ class CartsController < ApplicationController
 
   def show
     @cart = Cart.find(session[:cart_id])
-    if !@cart.cart_items.empty?
-      @restaurant = Restaurant.find(@cart.cart_items.last.item.menus.first.restaurant.id)
+    if !@cart.shopping_cart_items.empty?
+      @restaurant = Restaurant.find(@cart.shopping_cart_items.last.item.menus.first.restaurant.id)
     else
       redirect_to root_path
     end

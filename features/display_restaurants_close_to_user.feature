@@ -1,9 +1,9 @@
+@javascript
 Feature:
   As a user,
   In order to find a restaurant
   I would like to see only restaurants close by (3 km)
 
-  @javascript
   Scenario: Restaurants only show up when close to the user (3 km)
     Given the following restaurants with associations exist
       | name  | address                       | description         | res_category_name | menu_name |
@@ -15,3 +15,17 @@ Feature:
     And I should not see the text "Nappi"
     When the map has been loaded
     Then I should see "3" pins on the map
+
+  Scenario: Display message when there are no restaurants close by
+    Given the following restaurants with associations exist
+      | name  | address                     | description         | res_category_name | menu_name |
+      | Yappi | Kiruna                      | Some hip thai place | Japanese          | Lunch     |
+      | Happi | Haparanda                   | Some hip food place | Japanese          | Lunch     |
+      | Nappi | Kungsgatan 45 702 24 Orebro | Some bad food place | Japanese          | Lunch     |
+    And I navigate to the index page
+    Then I should see the text "There are no restaurants near your location"
+    And I should not see the text "Yappi"
+    And I should not see the text "Happi"
+    And I should not see the text "Nappi"
+    When the map has been loaded
+    Then I should see "1" pins on the map

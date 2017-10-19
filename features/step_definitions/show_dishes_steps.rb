@@ -24,7 +24,3 @@ Given('the following restaurants with associations exist') do |table|
     restaurant.update(admin_user: restaurant_owner) unless restaurant_owner.nil?
   end
 end
-
-And(/^show me the page$/) do
-  save_and_open_page
-end
