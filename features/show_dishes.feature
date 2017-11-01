@@ -6,8 +6,8 @@ Feature: user can see dishes and their info
   Background:
 
     Given the following restaurants with associations exist
-      | name    | address    |  description          | res_category_name | menu_name    |
-      | Yappi   | Stockholm  |  Some hip thai place  | Japanese          | Lunch        |
+      | name  | address   | description         | res_category_name | menu_name | image           |
+      | Yappi | Stockholm | Some hip thai place | Japanese          | Lunch     | kfc.jpeg |
 
     Then I navigate to the index page
     And I click "Japanese"
@@ -20,4 +20,4 @@ Feature: user can see dishes and their info
     Then I click "DishCategory"
     Then I should see the text "DishName"
     And I should see the text "10"
-    And I should see the picture "https://goo.gl/images/hpTGCV"
+    And I should see "kfc.jpeg" image

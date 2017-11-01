@@ -10,9 +10,9 @@ Feature: Admin can administer menus
       | My Mex  | Stockholm | Mexican tacos       | Mexican           | Breakfast |
 
     And the following dishes exists
-      | name        | description         | price | pic_url               | dish_category | menu_name |
-      | Dumplings   | Tasty Japanese food | 15    | https://goo.gl/qKCyL5 | Main          | Lunch     |
-      | Sushi rolls | Tasty Japanese food | 10    | https://goo.gl/fH7P5F | Main          | Lunch     |
+      | name        | description         | price | image    | dish_category | menu_name |
+      | Dumplings   | Tasty Japanese food | 15    | kfc.jpeg | Main          | Lunch     |
+      | Sushi rolls | Tasty Japanese food | 10    | kfc.jpeg | Main          | Lunch     |
 
     And The following admins exist
       | email             | password | super_admin |
