@@ -5,12 +5,12 @@ Feature: Admin can administer dishes
 
   Background:
     Given the following dishes exists
-      | name        | description         | price | pic_url               | dish_category |menu_name    |
-      | Sushi rolls | Tasty Japanese food | 10    | https://goo.gl/fH7P5F | Main          |Lunch        |
-      | Dumplings   | Tasty Japanese food | 15    | https://goo.gl/qKCyL5 | Main          |Lunch        |
+      | name        | description         | price | image    | dish_category | menu_name |
+      | Sushi rolls | Tasty Japanese food | 10    | kfc.jpeg | Main          | Lunch     |
+      | Dumplings   | Tasty Japanese food | 15    | kfc.jpeg | Main          | Lunch     |
     And The following admins exist
-      | email                        | password | super_admin |
-      | admin@example.com            | password | yes         |
+      | email             | password | super_admin |
+      | admin@example.com | password | yes         |
     And I am logged in to AA as "admin@example.com"
     And I go to the dashboard
 
@@ -19,11 +19,16 @@ Feature: Admin can administer dishes
     Then I click "New Dish"
     And I fill in "Name" with "Sushi"
     And I fill in "Description" with "I really cant come up with some boring description"
-    And I fill in "Price" with "23"
-    And I fill in "Picture URL" with "https://goo.gl/qKCyL5"
     And I select "Main" from dish category dropdown
+    And I fill in "Price" with "23"
+    And I add "dish" "kfc.jpeg"
     Then I click "Create Dish"
     And I should see "Dish was successfully created."
+    And I should see the text "Sushi"
+    And I should see the text "I really cant come up with some boring description"
+    And I should see the text "Main"
+    And I should see the text "23"
+    And I should see "kfc.jpeg" image
 
   Scenario: Admin updates dish
     Given I click "Dishes"

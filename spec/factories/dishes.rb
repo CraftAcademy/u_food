@@ -3,7 +3,7 @@ FactoryGirl.define do
     name 'DishName'
     description 'DishDescription'
     price 10
-    pic_url 'https://goo.gl/images/hpTGCV'
+    image { File.new("#{Rails.root}/spec/fixtures/kfc.jpeg") }
 
     factory :dish_with_category do
       dish_category

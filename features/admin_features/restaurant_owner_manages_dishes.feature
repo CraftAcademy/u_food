@@ -15,10 +15,10 @@ Feature: Restaurant owner can edit a dish
       | My Mex  | Stockholm | Mexican tacos       | Mexican           | Dinner    | mymex_owner@example.com  |
 
     Given the following dishes exists
-      | name        | description         | price | pic_url               | dish_category | menu_name | restaurant |
-      | Sushi rolls | Tasty Japanese food | 10    | https://goo.gl/fH7P5F | Main          | Lunch     | My Thai    |
-      | Dumplings   | Tasty Japanese food | 15    | https://goo.gl/qKCyL5 | Main          | Lunch     | My Thai    |
-      | Tacos       | Tasty Mexican food  | 12    | https://goo.gl/qKCyL5 | Main          | Dinner    | My Mex     |
+      | name        | description         | price | image    | dish_category | menu_name | restaurant |
+      | Sushi rolls | Tasty Japanese food | 10    | kfc.jpeg | Main          | Lunch     | My Thai    |
+      | Dumplings   | Tasty Japanese food | 15    | kfc.jpeg | Main          | Lunch     | My Thai    |
+      | Tacos       | Tasty Mexican food  | 12    | kfc.jpeg | Main          | Dinner    | My Mex     |
 
     And I am logged in to AA as "mythai_owner@example.com"
     And I go to the dashboard
@@ -29,7 +29,7 @@ Feature: Restaurant owner can edit a dish
     And I fill in "Name" with "Sushi"
     And I fill in "Description" with "I really cant come up with some boring description"
     And I fill in "Price" with "23"
-    And I fill in "Picture URL" with "https://goo.gl/qKCyL5"
+    And I add "dish" "kfc.jpeg"
     And I select "My Thai" from dish dropdown
     And I select "Lunch" from menu line list
     And I select "Main" from dish category dropdown
