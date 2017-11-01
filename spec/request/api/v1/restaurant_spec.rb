@@ -55,25 +55,24 @@ RSpec.describe 'Restaurant', type: :request do
 
       get "/api/v1/restaurants/#{restaurant.id}"
 
-      expected_response = {"restaurant" =>
-                               {"id"=>restaurant.id,
-                                "name"=>"My Thai",
-                                "restaurant_category"=>"Thai food",
-                                "menu"=>
-                                    [{"id"=>menu.id,
-                                      "name"=>"Lunch",
-                                      "dishes"=>
-                                          [{"id"=>dish.id,
-                                            "name"=>"Dumplings",
-                                            "description"=>"boring food",
-                                            "price"=>10,
-                                            "image"=>dish.image.url,
-                                            "dish_category"=>"Main"}]}]}}
+      expected_response = {'restaurant' =>
+                               {'id' => restaurant.id,
+                                'name' => 'My Thai',
+                                'restaurant_category' => 'Thai food',
+                                'menu' =>
+                                    [{'id' => menu.id,
+                                      'name' => 'Lunch',
+                                      'dishes' =>
+                                          [{'id' => dish.id,
+                                            'name' => 'Dumplings',
+                                            'description' => 'boring food',
+                                            'price' => 10,
+                                            'image' => dish.image.url,
+                                            'dish_category' => 'Main'}]}]}}
 
 
-
-          expect(response.status).to eq 200
-                           expect(response_json).to eq expected_response
+      expect(response.status).to eq 200
+      expect(response_json).to eq expected_response
     end
   end
 end
