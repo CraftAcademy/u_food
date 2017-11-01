@@ -5,8 +5,9 @@ class Api::V1::RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.find(params[:id])
+    # @restaurant = Restaurant.find(params[:id])
     # binding.pry
-    # @restaurant = Restaurant.where(id: params[:id]).includes(:restaurant_category, :menus, :dishes, :dish_categories)
+    @restaurant = Restaurant.where(id: params[:id]).includes(:restaurant_category, :menus, :dishes, :dish_categories)
+    @restaurant = @restaurant[0]
   end
 end
