@@ -33,15 +33,15 @@ RSpec.describe 'Restaurant', type: :request do
 
       get '/api/v1/restaurants'
 
-      expected_response = {"restaurants" =>
-                               [{"id" => restaurant.id,
-                                 "name" => "My Thai",
-                                 "address" => "Kungsgatan 1, Stockholm",
-                                 "description" => "boring food",
-                                 "latitude" => 59.3360777,
-                                 "longitude" => 18.071807,
-                                 "category_name" => "Thai food",
-                                 "category_description" => "Thai food"}]}
+      expected_response = {'restaurants' =>
+                               [{'id' => restaurant.id,
+                                 'name' => 'My Thai',
+                                 'address' => 'Kungsgatan 1, Stockholm',
+                                 'description' => 'boring food',
+                                 'latitude' => 59.3360777,
+                                 'longitude' => 18.071807,
+                                 'category_name' => 'Thai food',
+                                 'category_description' => 'Thai food'}]}
 
 
       expect(response.status).to eq 200
@@ -55,16 +55,17 @@ RSpec.describe 'Restaurant', type: :request do
 
       get "/api/v1/restaurants/#{restaurant.id}"
 
-      expected_response = {"dishes" =>
-                            [{"id"=>dish.id,
-                              "name"=>"Dumplings",
-                              "description"=>"boring food",
-                              "price"=>10,
-                              "image"=>dish.image.url,
-                              "dish_category"=>"Main",
-                              "restaurant"=>"My Thai",
-                              "restaurant_category"=>"Thai food",
-                              "menu"=>[{"name"=>"Lunch"}]}]
+      expected_response = {'dishes' =>
+                            [{'id'=>dish.id,
+                              'name'=>'Dumplings',
+                              'description'=>'boring food',
+                              'price'=>10,
+                              'image'=>dish.image.url,
+                              'dish_category'=>'Main',
+                              'restaurant'=>'My Thai',
+                              'restaurant_category'=>'Thai food',
+                              'menu'=>
+                                  [{'name'=>'Lunch'}]}]
                             }
 
       expect(response.status).to eq 200
