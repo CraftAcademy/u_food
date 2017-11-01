@@ -5,27 +5,22 @@ RSpec.describe 'Restaurant', type: :request do
 
     let!(:restaurant_category) {FactoryGirl.create(:restaurant_category,
                                                   name: 'Thai food',
-                                                  description: 'Thai food',
-                                                  id: 1)}
+                                                  description: 'Thai food')}
     let!(:restaurant) {FactoryGirl.create(:restaurant,
                                                 name: 'My Thai',
                                                 address: 'Kungsgatan 1, Stockholm',
                                                 description: 'boring food',
                                                 latitude: 59.3360777, longitude: 18.071807,
-                                                id: 1,
                                                 restaurant_category: restaurant_category)}
     let!(:dish_category) {FactoryGirl.create(:dish_category,
-                                            name: 'Main',
-                                            id: 1)}
+                                            name: 'Main')}
     let!(:menu) {FactoryGirl.create(:menu,
                                           name: 'Lunch',
-                                          restaurant: restaurant,
-                                          id: 1)}
+                                          restaurant: restaurant)}
     let!(:dish) {FactoryGirl.create(:dish,
                                           name: 'Dumplings',
                                           description: 'boring food',
                                           price: 10,
-                                          id: 1,
                                           dish_category: dish_category,
                                           restaurant: restaurant)}
     let!(:menu_line) {FactoryGirl.create(:menu_line,
@@ -39,7 +34,7 @@ RSpec.describe 'Restaurant', type: :request do
       get '/api/v1/restaurants'
 
       expected_response = {"restaurants" =>
-                               [{"id" => 1,
+                               [{"id" => restaurant.id,
                                  "name" => "My Thai",
                                  "address" => "Kungsgatan 1, Stockholm",
                                  "description" => "boring food",
@@ -58,13 +53,14 @@ RSpec.describe 'Restaurant', type: :request do
 
     it 'returns collection of dishes' do
 
-      get '/api/v1/restaurants/1'
+      get "/api/v1/restaurants/#{restaurant.id}"
 
       expected_response = {"dishes" =>
-                            [{"id"=>1, "name"=>"Dumplings",
+                            [{"id"=>dish.id,
+                              "name"=>"Dumplings",
                               "description"=>"boring food",
                               "price"=>10,
-                              "image"=>"http://s3-eu-central-1.amazonaws.com/ufood/dishes/images/000/000/001/original/kfc.jpeg?1509532995",
+                              "image"=>dish.image.url,
                               "dish_category"=>"Main",
                               "restaurant"=>"My Thai",
                               "restaurant_category"=>"Thai food",
