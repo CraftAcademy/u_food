@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Restaurant', type: :request do
   let(:headers) {{HTTP_ACCEPT: 'application/json'}}
 
-  describe 'Get api/v1/restaurants' do
-    let(:restaurant_category) {FactoryGirl.create(:restaurant_category,
+    let!(:restaurant_category) {FactoryGirl.create(:restaurant_category,
                                                   name: 'Thai food',
                                                   description: 'Thai food',
                                                   id: 1)}
@@ -15,7 +14,7 @@ RSpec.describe 'Restaurant', type: :request do
                                                 latitude: 59.3360777, longitude: 18.071807,
                                                 id: 1,
                                                 restaurant_category: restaurant_category)}
-    let(:dish_category) {FactoryGirl.create(:dish_category,
+    let!(:dish_category) {FactoryGirl.create(:dish_category,
                                             name: 'Main',
                                             id: 1)}
     let!(:menu) {FactoryGirl.create(:menu,
@@ -32,6 +31,8 @@ RSpec.describe 'Restaurant', type: :request do
     let!(:menu_line) {FactoryGirl.create(:menu_line,
                                                dish: dish,
                                                menu: menu)}
+
+    describe 'Get api/v1/restaurants' do
 
     it 'returns collection of restaurants' do
 
@@ -60,15 +61,15 @@ RSpec.describe 'Restaurant', type: :request do
       get '/api/v1/restaurants/1'
 
       expected_response = {"dishes" =>
-                               [{"id" => 1,
-                                 "name" => "Dumplings",
-                                 "desription" => "boring food",
-                                 "price" => 10,
-                                 "image" => "https://goo.gl/images/hpTGCV",
-                                 "menu" => "Lunch",
-                                 "dish_category" => "Main",
-                                 "restaurant" => "My Thai",
-                                 "restaurant_category" => "Thai Food"}]}
+                            [{"id"=>1, "name"=>"Dumplings",
+                              "description"=>"boring food",
+                              "price"=>10,
+                              "image"=>"http://s3-eu-central-1.amazonaws.com/ufood/dishes/images/000/000/001/original/kfc.jpeg?1509532995",
+                              "dish_category"=>"Main",
+                              "restaurant"=>"My Thai",
+                              "restaurant_category"=>"Thai food",
+                              "menu"=>[{"name"=>"Lunch"}]}]
+                            }
 
       expect(response.status).to eq 200
       expect(response_json).to eq expected_response
