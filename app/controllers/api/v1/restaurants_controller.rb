@@ -3,4 +3,13 @@ class Api::V1::RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all.includes(:restaurant_category)
   end
+
+  def create
+    cart = Cart.create
+    items = params[:restaurants][:data][:dish]
+    items.each do |item|
+      item = Dish.find_by(id: items[0].to_i)
+      cart.add(item, item.price)
+    end
+  end
 end
