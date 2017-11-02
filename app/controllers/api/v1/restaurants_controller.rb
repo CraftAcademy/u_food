@@ -1,5 +1,6 @@
 class Api::V1::RestaurantsController < ApiController
   include DeviseTokenAuth::Concerns::SetUserByToken
+  before_action :authenticate_api_v1_user!, only: :create
 
   def index
     @restaurants = Restaurant.all.includes(:restaurant_category)
