@@ -11,6 +11,7 @@ RSpec.describe Api::V1::RestaurantsController, type: :request do
       entry = Cart.last
       expect(entry.total_unique_items).to eq 2
       expected_response = {"carts" => [{"id" => enrty.id}] }
+      expect(response_json).to eq expected_response
     end
   end
 end
