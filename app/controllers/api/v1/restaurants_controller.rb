@@ -1,5 +1,4 @@
-class Api::V1::RestaurantsController < ApplicationController
-
+class Api::V1::RestaurantsController < ApiController
   def index
     @restaurants = Restaurant.all.includes(:restaurant_category)
   end
