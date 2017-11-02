@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  namespace :api do
-    namespace :v1, defaults: { format: :json } do
-      resources :restaurants, only: [:index, :show, :create]
-    end
-  end
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -23,4 +18,16 @@ Rails.application.routes.draw do
   end
 
   get '/add_to_cart/:id', controller: :carts, action: :add, as: :add_to_cart
+
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :restaurants, only: [:index, :show, :create]
+      mount_devise_token_auth_for 'User', at: 'auth',
+                                  skip: [:omniauth_callbacks],
+                                  controllers: {
+                                      sessions: 'api/v1/sessions',
+                                      registrations: 'api/v1/registrations'
+                                  }
+    end
+  end
 end
