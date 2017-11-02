@@ -31,7 +31,12 @@ module UFood
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
-        resource '*', headers: :any, methods: [:get, :post, :put, :delete]
+        # resource '*', headers: :any, methods: [:get, :post, :put, :delete]
+        resource '*',
+                 headers: :any,
+                 expose: %w(access-token expiry token-type uid client HTTP_UID HTTP_ACCESS_TOKEN HTTP_CLIENT HTTP_EXPIRY HTTP_TOKEN_TYPE ),
+                 methods: [:get, :post, :options, :delete, :put],
+                 max_age: 3600
       end
     end
 

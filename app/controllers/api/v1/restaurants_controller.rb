@@ -1,4 +1,6 @@
 class Api::V1::RestaurantsController < ApiController
+  include DeviseTokenAuth::Concerns::SetUserByToken
+
   def index
     @restaurants = Restaurant.all.includes(:restaurant_category)
   end
