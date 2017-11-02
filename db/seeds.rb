@@ -35,8 +35,9 @@ Restaurant.all.each do |restaurant|
       dish = Dish.create(name: Faker::Food.dish,
                          description: Faker::Hobbit.quote,
                          price: Faker::Number.between(5, 25),
-                         pic_url: Faker::LoremPixel.image('200x200', false, 'food'),
-                         dish_category: DishCategory.find_by(name: category)
+                         image: File.new("#{Rails.root}/spec/fixtures/kfc.jpeg"),
+                         dish_category: DishCategory.find_by(name: category),
+                         restaurant: restaurant
       )
       MenuLine.create(menu: restaurant.menus.first, dish: dish)
     end
