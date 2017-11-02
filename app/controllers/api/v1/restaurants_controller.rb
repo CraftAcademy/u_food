@@ -9,11 +9,11 @@ class Api::V1::RestaurantsController < ApplicationController
   end
 
   def create
-    cart = Cart.create
+    @cart = Cart.create
     items = params[:restaurants][:data][:dish]
     items.each do |item|
       item = Dish.find_by(id: items[0].to_i)
-      cart.add(item, item.price)
+      @cart.add(item, item.price)
     end
   end
 end
