@@ -11,18 +11,24 @@ class Api::V1::RestaurantsController < ApiController
   end
 
   def create
-    if !current_api_v1_user.nil?
-      @cart = Cart.create(user: current_api_v1_user)
-      params_allowed
+    @cart = Cart.create(user: current_api_v1_user)
+    if params[:order][:dishes].present?
+      @items = params[:order][:dishes]
       @items.each do |item|
-        dish = Dish.find_by(id: item.to_i)
-        @cart.add(dish, dish.price)
+        if an_integer?(item)
+          dish = Dish.find_by(id: item.to_i)
+          @cart.add(dish, dish.price)
+        end
       end
     end
   end
 
-  def params_allowed
-
-    @items = params[:order][:dishes]
+  def an_integer?(item)
+    if /(\D+)/.match(item).nil?
+      return true
+    else
+      render json: {message: 'wrong data received'}
+      return false
+    end
   end
 end
