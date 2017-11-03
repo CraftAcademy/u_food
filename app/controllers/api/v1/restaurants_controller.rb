@@ -11,11 +11,18 @@ class Api::V1::RestaurantsController < ApiController
   end
 
   def create
-    @cart = Cart.create
-    items = params[:restaurants][:data][:dish]
-    items.each do |item|
-      item = Dish.find_by(id: items[0].to_i)
-      @cart.add(item, item.price)
+    if !current_api_v1_user.nil?
+      @cart = Cart.create(user: current_api_v1_user)
+      params_allowed
+      @items.each do |item|
+        dish = Dish.find_by(id: item.to_i)
+        @cart.add(dish, dish.price)
+      end
     end
+  end
+
+  def params_allowed
+
+    @items = params[:order][:dishes]
   end
 end
